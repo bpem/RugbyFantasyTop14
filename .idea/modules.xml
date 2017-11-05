@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/RugbyFantasyTop14.iml" filepath="$PROJECT_DIR$/RugbyFantasyTop14.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/RugbyFantasyTop14.iml" filepath="$PROJECT_DIR$/.idea/RugbyFantasyTop14.iml" />
+      <module fileurl="file://D:\UQAC\Programmation plateformes mobile\Projet\OfficialProjectRugbyFantasy\RugbyFantasyTop14\RugbyFantasyTop14.iml" filepath="D:\UQAC\Programmation plateformes mobile\Projet\OfficialProjectRugbyFantasy\RugbyFantasyTop14\RugbyFantasyTop14.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\UQAC\Programmation plateformes mobile\Projet\OfficialProjectRugbyFantasy\RugbyFantasyTop14\app\app.iml" filepath="D:\UQAC\Programmation plateformes mobile\Projet\OfficialProjectRugbyFantasy\RugbyFantasyTop14\app\app.iml" />
     </modules>
   </component>
 </project>
