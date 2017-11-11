@@ -16,6 +16,5 @@ public class CreerChampionnatInteractorImpl implements CreerChampionnatInteracto
             listener.onFailure("Nom incorrect");
         else if(!TextUtils.isEmpty(nom))
             listener.onSuccess();
-
     }
 }
