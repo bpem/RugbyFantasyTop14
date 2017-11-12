@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "988493724130",
+    "firebase_url": "https://rugbyfantasytop14-d9f24.firebaseio.com",
+    "project_id": "rugbyfantasytop14-d9f24",
+    "storage_bucket": "rugbyfantasytop14-d9f24.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:988493724130:android:2a44fbc065971cb9",
+        "android_client_info": {
+          "package_name": "com.masquilierpemeja.rugbyfantasytop14"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "988493724130-6b95o9cv572cc7c6m2qng8tmir8flq1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masquilierpemeja.rugbyfantasytop14",
+            "certificate_hash": "fa20eec6d1db44ec6939321df63bcd604c090ee5"
+          }
+        },
+        {
+          "client_id": "988493724130-mdqdfdunv4rq5ppd2jf18d0qp18h3oi9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masquilierpemeja.rugbyfantasytop14",
+            "certificate_hash": "f66fafd738b6168e71d135247832e70c335ce625"
+          }
+        },
+        {
+          "client_id": "988493724130-lj3ma84a4qldfa1djkh3ntsdsdd1lsb1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsnYC4n8buQ8mmK08qQE0lnuGaS32hkNY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "988493724130-lj3ma84a4qldfa1djkh3ntsdsdd1lsb1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
