@@ -8,9 +8,11 @@ public interface CreerChampionnatInteractor {
 
     interface onCreerChampionnatFinishedListener{
         void onNomChampionnatError();
+        void onMotDePasseError();
         void onSuccess();
         void onFailure(String message);
     }
 
-    void championnat(String nom, onCreerChampionnatFinishedListener listener);
+
+    void championnat(String nomChampionnat, Boolean estPublic, Integer nombreDeParticipant, String motDePasse, onCreerChampionnatFinishedListener listener);
 }

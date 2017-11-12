@@ -6,6 +6,6 @@ package com.masquilierpemeja.rugbyfantasytop14.Championnat;
 
 public interface CreerChampionnatPresenter {
 
-    void creerChampionnat(String nomChampionnat);
+    void creerChampionnat(String nomChampionnat, Boolean estPublic, Integer nombreDeJoueur, String motDePasse);
     void onDestroy();
 }

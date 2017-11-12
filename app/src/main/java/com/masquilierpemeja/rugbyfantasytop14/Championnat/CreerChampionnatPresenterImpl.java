@@ -1,9 +1,12 @@
 package com.masquilierpemeja.rugbyfantasytop14.Championnat;
 
+import com.google.firebase.database.IgnoreExtraProperties;
+
 /**
  * Created by bastienpemeja on 10/11/2017.
  */
 
+@IgnoreExtraProperties
 public class CreerChampionnatPresenterImpl implements CreerChampionnatPresenter, CreerChampionnatInteractor.onCreerChampionnatFinishedListener{
 
     CreerChampionnatView mCreerChampionnatView;
@@ -16,10 +19,10 @@ public class CreerChampionnatPresenterImpl implements CreerChampionnatPresenter,
 
 
     @Override
-    public void creerChampionnat(String nomChampionnat) {
+    public void creerChampionnat(String nomChampionnat,Boolean estPublic, Integer nombreDeJoueur, String motDePasse) {
         if (mCreerChampionnatView != null) {
             mCreerChampionnatView.showProgress();
-            mCreerChampionnatInteractor.championnat(nomChampionnat,this);
+            mCreerChampionnatInteractor.championnat(nomChampionnat, estPublic, nombreDeJoueur, motDePasse,this);
         }
     }
 
@@ -35,6 +38,14 @@ public class CreerChampionnatPresenterImpl implements CreerChampionnatPresenter,
         if (mCreerChampionnatView != null) {
             mCreerChampionnatView.hideProgress();
             mCreerChampionnatView.setNomChampionnatError();
+        }
+    }
+
+    @Override
+    public void onMotDePasseError() {
+        if (mCreerChampionnatView != null) {
+            mCreerChampionnatView.hideProgress();
+            mCreerChampionnatView.setMotDePasseError();
         }
     }
 

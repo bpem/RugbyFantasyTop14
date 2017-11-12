@@ -9,6 +9,7 @@ public interface CreerChampionnatView {
     void showProgress();
     void hideProgress();
     void setNomChampionnatError();
+    void setMotDePasseError();
     void navigateToMain();
     void showAlert(String message);
 }
