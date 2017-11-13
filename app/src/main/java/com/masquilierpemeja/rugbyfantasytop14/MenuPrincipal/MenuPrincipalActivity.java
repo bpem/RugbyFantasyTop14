@@ -8,6 +8,7 @@ import android.widget.Button;
 
 import com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalView;
+import com.masquilierpemeja.rugbyfantasytop14.Profil.ProfilActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 
@@ -64,7 +65,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrin
 
     @Override
     public void navigateToMonProfil() {
-
+        startActivity(new Intent(MenuPrincipalActivity.this, ProfilActivity.class));
     }
 
     @Override
