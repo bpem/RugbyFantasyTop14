@@ -11,5 +11,6 @@ public interface RejoindreChampionnatView {
     void setMotDePasseError();
     void navigateToMain();
     void showAlert(String message);
+    void navigateToPageChampionnat();
 
 }

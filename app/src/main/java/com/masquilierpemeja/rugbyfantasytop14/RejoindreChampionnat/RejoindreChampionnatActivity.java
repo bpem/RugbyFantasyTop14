@@ -1,6 +1,7 @@
 package com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,18 +11,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 
 import java.util.ArrayList;
 
 public class RejoindreChampionnatActivity extends AppCompatActivity implements RejoindreChampionnatView {
 
-    DatabaseReference myRef;
     ListView lvChampionnats;
     ArrayList<String> desChampionnats = new ArrayList<>();
     private ArrayAdapter<String> adapter;
@@ -62,6 +58,10 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
     @Override
     public void navigateToMain() {
 
+    } @Override
+
+    public void navigateToPageChampionnat() {
+        startActivity(new Intent(RejoindreChampionnatActivity.this, PageChampionnatActivity.class));
     }
 
     @Override
@@ -70,7 +70,6 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
     }
 
     public void dialog(){
-
         new AlertDialog.Builder(this)
                 .setTitle("Rejoindre un championnat")
                 .setMessage("Voulez-vous rejoindre ce championnat ?")
