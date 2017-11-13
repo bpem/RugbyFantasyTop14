@@ -12,7 +12,7 @@
     <LinearLayout
         android:layout_width="388dp"
         android:layout_height="fill_parent"
-        android:background="@color/primary"
+        android:background="@color/secondaryLight"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
@@ -32,7 +32,7 @@
             android:gravity="center_horizontal"
             android:padding="@dimen/activity_horizontal_margin"
             android:text="@string/enregistrer_adresse_mail"
-            android:textColor="@android:color/white"
+            android:textColor="@color/primary"
             android:textSize="14dp" />
 
 
@@ -44,8 +44,8 @@
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white" />
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary" />
 
 
         <EditText
@@ -57,8 +57,8 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"></EditText>
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary"></EditText>
 
 
         <Button
@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="null"
+            android:background="@color/primary"
             android:text="@string/action_sign_in_short"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -82,7 +82,7 @@
             android:background="@null"
             android:text="@string/btn_link_to_login"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/primary"
             android:textSize="15dp" />
     </LinearLayout>
 
