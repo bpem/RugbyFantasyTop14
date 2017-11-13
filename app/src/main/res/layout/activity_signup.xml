@@ -10,21 +10,30 @@
 
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="388dp"
         android:layout_height="fill_parent"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/secondaryLight"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="@dimen/activity_horizontal_margin">
 
 
         <ImageView
-            android:layout_width="@dimen/logo_w_h"
-            android:layout_height="@dimen/logo_w_h"
+            android:layout_width="190dp"
+            android:layout_height="140dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="30dp"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/image_rugby" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/enregistrer_adresse_mail"
+            android:textColor="@color/primary"
+            android:textSize="14dp" />
 
 
         <EditText
@@ -35,10 +44,8 @@
             android:inputType="textEmailAddress"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@android:color/white" />
-
-
-
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary" />
 
 
         <EditText
@@ -50,8 +57,8 @@
             android:inputType="textPassword"
             android:maxLines="1"
             android:singleLine="true"
-            android:textColor="@android:color/white">
-        </EditText>
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary"></EditText>
 
 
         <Button
@@ -60,9 +67,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@color/colorAccent"
+            android:background="@color/primary"
             android:text="@string/action_sign_in_short"
-            android:textColor="@android:color/black"
+            android:textColor="@color/white"
             android:textStyle="bold" />
 
         <!-- Link to Login Screen -->
@@ -75,7 +82,7 @@
             android:background="@null"
             android:text="@string/btn_link_to_login"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/primary"
             android:textSize="15dp" />
     </LinearLayout>
 
