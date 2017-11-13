@@ -1,4 +1,4 @@
-package com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity;
+package com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal;
 
 /**
  * Created by bastienpemeja on 12/11/2017.

@@ -13,8 +13,7 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
 
-import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
-import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity.MenuPrincipalActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 

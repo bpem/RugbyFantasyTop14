@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "988493724130-6b95o9cv572cc7c6m2qng8tmir8flq1n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masquilierpemeja.rugbyfantasytop14",
+            "certificate_hash": "fa20eec6d1db44ec6939321df63bcd604c090ee5"
+          }
+        },
+        {
           "client_id": "988493724130-mdqdfdunv4rq5ppd2jf18d0qp18h3oi9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
