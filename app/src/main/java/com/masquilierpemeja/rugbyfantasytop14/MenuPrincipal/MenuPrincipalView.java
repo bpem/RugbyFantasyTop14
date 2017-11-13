@@ -12,5 +12,6 @@ public interface MenuPrincipalView {
     void navigateToCreerChampionnat();
     void navigateToMonProfil();
     void showAlert(String message);
+    void logout(String message);
 
 }
