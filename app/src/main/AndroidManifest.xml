@@ -2,8 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.masquilierpemeja.rugbyfantasytop14">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,10 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-
-        <activity android:name=".Signup.SignupActivity"></activity>
-        <activity android:name=".Login.LoginActivity"/>
-        <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity"/>
         <activity android:name=".CreerChampionnat.CreerChampionnatActivity"/>
         <activity android:name=".RejoindreChampionnat.RejoindreChampionnatActivity"/>
         <activity android:name=".MenuPrincipalActivity.MenuPrincipalActivity">
@@ -24,9 +18,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
     </application>
 
 </manifest>
