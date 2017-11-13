@@ -48,9 +48,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.onLog
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data, FirebaseAuth auth) {
         if (mLoginView != null ){
-            mLoginInteractorImpl.onActivityResult(requestCode, resultCode, data, this);
+            mLoginInteractorImpl.onActivityResult(requestCode, resultCode, data, auth , this);
         }
     }
 

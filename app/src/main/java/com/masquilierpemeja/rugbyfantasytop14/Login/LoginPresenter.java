@@ -19,7 +19,7 @@ public interface LoginPresenter {
     void onCompleteMailPassword(String email,String password, FirebaseAuth auth);
     void onDestroy();
 
-    void onActivityResult(int requestCode, int resultCode, Intent data);
+    void onActivityResult(int requestCode, int resultCode, Intent data,FirebaseAuth auth);
     void onClickFacebook(LoginButton facebookButton,  CallbackManager callbackManager);
 
 }

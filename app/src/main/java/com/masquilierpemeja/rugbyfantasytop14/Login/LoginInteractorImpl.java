@@ -20,8 +20,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.masquilierpemeja.rugbyfantasytop14.*;
 import com.masquilierpemeja.rugbyfantasytop14.LoginActivity;
 
@@ -69,7 +72,7 @@ public class LoginInteractorImpl implements LoginInteractor {
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data, onLoginFinishedListener listener) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data, FirebaseAuth auth, onLoginFinishedListener listener) {
 
         if (requestCode == RC_SIGN_IN) {
             // The Task returned from this call is always completed, no need to attach
@@ -78,11 +81,11 @@ public class LoginInteractorImpl implements LoginInteractor {
 
             try {
                 GoogleSignInAccount account = task.getResult(ApiException.class);
-
+                firebaseAuthWithGoogle(account, auth , listener);
                 // Signed in successfully, show authenticated UI.
                 // updateUI(account);
 
-                listener.onGoogleSuccess();
+
 
             } catch (ApiException e) {
 
@@ -97,6 +100,34 @@ public class LoginInteractorImpl implements LoginInteractor {
         else if (resultCode != 0) {
             callbackManager.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void firebaseAuthWithGoogle(GoogleSignInAccount account, final FirebaseAuth auth, final onLoginFinishedListener listener) {
+
+        Log.d(TAG, "firebaseAuthWithGoogle:" + account.getId());
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "signInWithCredential:success");
+                            FirebaseUser user = auth.getCurrentUser();
+                            listener.onGoogleSuccess();
+//                            updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "signInWithCredential:failure", task.getException());
+                            listener.onGoogleFailure("Connexion impossible avec Google");
+
+                        }
+
+                    }
+                });
+
     }
 
     @Override

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import com.facebook.CallbackManager;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +30,7 @@ public interface LoginInteractor {
     }
 
     void loginWithMail(FirebaseAuth auth, String email, String password, onLoginFinishedListener Listener);
-    void onActivityResult(int requestCode, int resultCode, Intent data, onLoginFinishedListener listener);
+    void onActivityResult(int requestCode, int resultCode, Intent data,  FirebaseAuth auth, onLoginFinishedListener listener);
     void onClickFacebook(LoginButton facebookButton, CallbackManager mCallbackManager , onLoginFinishedListener listener);
+   void firebaseAuthWithGoogle(GoogleSignInAccount account, final FirebaseAuth auth, final onLoginFinishedListener listener);
 }

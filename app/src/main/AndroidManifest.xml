@@ -12,17 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
-        <activity android:name=".SignupActivity"></activity>
-        <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".MotDePasseOublieActivity">
+        <activity android:name=".Signup.SignupActivity"></activity>
+        <activity android:name=".Login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity"></activity>
+
     </application>
 
 </manifest>

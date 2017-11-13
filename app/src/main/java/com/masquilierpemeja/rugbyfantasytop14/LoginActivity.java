@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        FacebookSdk.sdkInitialize(getApplicationContext());
+   FacebookSdk.sdkInitialize(getApplicationContext());
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -196,7 +196,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         googleButton = (SignInButton) findViewById(R.id.sign_in_button_google);
-        facebookButton = (LoginButton) findViewById(R.id.sign_in_button_facebook);
+       // facebookButton = (LoginButton) findViewById(R.id.sign_in_button_facebook);
         callbackManager = CallbackManager.Factory.create();
 
     }

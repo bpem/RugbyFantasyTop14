@@ -14,14 +14,20 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.Signup.SignupActivity;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -39,17 +45,39 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private CallbackManager callbackManager;
     private static final int RC_SIGN_IN = 2;
 
+    GoogleApiClient mGoogleApiClient ;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+
+
+
+//        FacebookSdk.sdkInitialize(getApplicationContext());
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
         initializeControl();
+
+//        // Choose authentication providers
+//        List<AuthUI.IdpConfig> providers = Arrays.asList(
+//                new AuthUI.IdpConfig.Builder(AuthUI.GOOGLE_PROVIDER).build(),
+//                new AuthUI.IdpConfig.Builder(AuthUI.FACEBOOK_PROVIDER).build());
+//
+//// Create and launch sign-in intent
+//        startActivityForResult(
+//                AuthUI.getInstance()
+//                        .createSignInIntentBuilder()
+//                        .setAvailableProviders(providers)
+//                        .build(),
+//                RC_SIGN_IN);
+
+//        startActivityForResult(AuthUI.getInstance().createSignInIntentBuilder().setProviders(
+//                AuthUI.FACEBOOK_PROVIDER,
+//                AuthUI.GOOGLE_PROVIDER)
+//                .build(),1);
 
 
         // Une fois que l'utilisateur a enregistré ses informations de conenxion,
@@ -70,25 +98,30 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 .requestEmail()
                 .build();
 
+//        mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+//                .build();
+
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         googleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent signInIntent = mGoogleSignInClient.getSignInIntent();
                 startActivityForResult(signInIntent, RC_SIGN_IN);
             }
         });
 
-        facebookButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                callbackManager = CallbackManager.Factory.create();
-                facebookButton.setReadPermissions("email", "public_profile");
-                getLoginPresenter().onClickFacebook(facebookButton, callbackManager);
-            }
-        });
+//        facebookButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                callbackManager = CallbackManager.Factory.create();
+//                facebookButton.setReadPermissions("email", "public_profile");
+//                getLoginPresenter().onClickFacebook(facebookButton, callbackManager);
+//            }
+//        });
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,20 +133,24 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     }
 
-    public LoginPresenterImpl getLoginPresenter() {
-        if (mLoginPresenter == null) mLoginPresenter = new LoginPresenterImpl(this);
-        return mLoginPresenter;
-    }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        getLoginPresenter().onActivityResult(requestCode, resultCode, data);
+        getLoginPresenter().onActivityResult(requestCode, resultCode, data, auth);
 
 
         // NE PAS OUBLIER DE REMETTRE UNE CONDITION
         //callbackManager.onActivityResult(requestCode, resultCode, data);
     }
+
+
+
+    public LoginPresenterImpl getLoginPresenter() {
+        if (mLoginPresenter == null) mLoginPresenter = new LoginPresenterImpl(this);
+        return mLoginPresenter;
+    }
+
+
 
 
     @Override
@@ -131,7 +168,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         googleButton = (SignInButton) findViewById(R.id.sign_in_button_google);
-        facebookButton = (LoginButton) findViewById(R.id.sign_in_button_facebook);
+        //facebookButton = (LoginButton) findViewById(R.id.sign_in_button_facebook);
         signupButton = (Button) findViewById(R.id.btn_signup);
 
 
