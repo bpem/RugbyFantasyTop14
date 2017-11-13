@@ -238,6 +238,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         Toast.makeText(getApplicationContext(), "onSuccess", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
         startActivity(intent);
+        finish();
 
     }
 }

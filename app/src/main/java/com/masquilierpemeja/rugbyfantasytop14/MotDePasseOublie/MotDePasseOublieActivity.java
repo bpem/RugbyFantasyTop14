@@ -46,7 +46,7 @@ public class MotDePasseOublieActivity extends AppCompatActivity implements MotDe
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MotDePasseOublieActivity.this, MainActivity.class));
+                startActivity(new Intent(MotDePasseOublieActivity.this, LoginActivity.class));
             }
         });
 

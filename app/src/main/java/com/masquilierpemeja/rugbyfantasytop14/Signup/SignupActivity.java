@@ -83,6 +83,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView {
     public void signupIsSuccessful(String message) {
         Toast.makeText(SignupActivity.this , message, Toast.LENGTH_LONG).show();
         startActivity(new Intent(SignupActivity.this, MainActivity.class));
+        finish();
     }
 
     @Override
