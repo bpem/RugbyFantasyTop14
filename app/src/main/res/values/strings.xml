@@ -34,6 +34,7 @@
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
     <string name="facebook_application_id" translatable="false">294101641082812</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
+    <string name="enregistrer_adresse_mail">Entrez une adresse mail valide et un mot de passe !</string>
 
     <string-array name="nombre_de_joueur">
         <item>1</item>

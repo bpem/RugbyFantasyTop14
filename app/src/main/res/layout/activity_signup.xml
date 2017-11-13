@@ -25,6 +25,16 @@
             android:layout_marginBottom="30dp"
             android:src="@drawable/image_rugby" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/activity_horizontal_margin"
+            android:text="@string/enregistrer_adresse_mail"
+            android:textColor="@android:color/white"
+            android:textSize="14dp" />
+
 
         <EditText
             android:id="@+id/email"
