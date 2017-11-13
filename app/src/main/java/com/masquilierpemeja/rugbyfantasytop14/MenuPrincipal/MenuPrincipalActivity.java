@@ -40,6 +40,13 @@ public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrin
             }
         });
 
+        btnGoToMonProfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToMonProfil();
+            }
+        });
+
 
     }
 

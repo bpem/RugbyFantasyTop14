@@ -24,6 +24,8 @@
         <activity android:name=".CreerChampionnat.CreerChampionnatActivity" />
         <activity android:name=".RejoindreChampionnat.RejoindreChampionnatActivity" />
         <activity android:name=".MenuPrincipal.MenuPrincipalActivity"></activity>
+        <activity android:name=".Profil.ProfilActivity"></activity>
+
     </application>
 
 </manifest>
