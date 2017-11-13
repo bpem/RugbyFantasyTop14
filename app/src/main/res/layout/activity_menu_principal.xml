@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity.MenuPrincipalActivity">
+
+
+    <Button
+        android:id="@+id/btn_go_to_mon_profil"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mon profil"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="36dp" />
+
+
+    <Button
+        android:id="@+id/btn_go_to_creer_championnat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Créer mon championnat"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="106dp" />
+
+    <Button
+        android:id="@+id/btn_go_to_rejoindre_championnat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rejoindre un championnat"
+        tools:layout_editor_absoluteY="176dp"
+        tools:layout_editor_absoluteX="8dp" />
+
+    <Button
+        android:id="@+id/btn_deconnexion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Déconnexion"
+        tools:layout_editor_absoluteY="249dp"
+        tools:layout_editor_absoluteX="8dp" />
+
+
+</LinearLayout>

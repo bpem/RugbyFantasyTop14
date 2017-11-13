@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context="com.masquilierpemeja.rugbyfantasytop14.Championnat.CreerChampionnatActivity">
+    tools:context="com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity">
     
     <EditText
         android:hint="Nom du championnat"

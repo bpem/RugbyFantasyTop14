@@ -1,10 +1,9 @@
-package com.masquilierpemeja.rugbyfantasytop14.Championnat;
+package com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -15,7 +14,9 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
+import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 
 public class CreerChampionnatActivity extends AppCompatActivity implements CreerChampionnatView, CompoundButton.OnCheckedChangeListener {
 
@@ -98,8 +99,13 @@ public class CreerChampionnatActivity extends AppCompatActivity implements Creer
     }
 
     @Override
-    public void navigateToMain() {
-        startActivity(new Intent(CreerChampionnatActivity.this, MainActivity.class));
+    public void navigateToRejoindreChampionnat() {
+        startActivity(new Intent(CreerChampionnatActivity.this, RejoindreChampionnatActivity.class));
+    }
+
+    @Override
+    public void navigateToMenuPrincipal() {
+        startActivity(new Intent(CreerChampionnatActivity.this, MenuPrincipalActivity.class));
     }
 
     @Override

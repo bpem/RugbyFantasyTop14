@@ -1,11 +1,9 @@
-package com.masquilierpemeja.rugbyfantasytop14.Championnat;
+package com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat;
 
 import android.text.TextUtils;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Enumeration;
 
 /**
  * Created by bastienpemeja on 10/11/2017.
@@ -17,8 +15,6 @@ public class CreerChampionnatInteractorImpl implements CreerChampionnatInteracto
     public void championnat(String nomChampionnat, Boolean estPublic, Integer nombreDeParticipant, String motDePasse, onCreerChampionnatFinishedListener listener) {
         if(TextUtils.isEmpty(nomChampionnat))
             listener.onNomChampionnatError();
-        else if(TextUtils.isEmpty(motDePasse))
-            listener.onMotDePasseError();
         else if(nombreDeParticipant > 14 && nombreDeParticipant < 1)
             listener.onFailure("Nombre de participant incorrect");
         else if(!TextUtils.isEmpty(nomChampionnat)){

@@ -1,4 +1,4 @@
-package com.masquilierpemeja.rugbyfantasytop14.Championnat;
+package com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 
@@ -53,7 +53,7 @@ public class CreerChampionnatPresenterImpl implements CreerChampionnatPresenter,
     public void onSuccess() {
         if (mCreerChampionnatView != null) {
             mCreerChampionnatView.hideProgress();
-            mCreerChampionnatView.navigateToMain();
+            mCreerChampionnatView.navigateToMenuPrincipal();
         }
 
     }

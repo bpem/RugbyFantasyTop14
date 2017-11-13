@@ -1,4 +1,4 @@
-package com.masquilierpemeja.rugbyfantasytop14.Championnat;
+package com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat;
 
 /**
  * Created by bastienpemeja on 10/11/2017.
