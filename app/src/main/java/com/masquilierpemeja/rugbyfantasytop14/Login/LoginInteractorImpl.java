@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.masquilierpemeja.rugbyfantasytop14.*;
-import com.masquilierpemeja.rugbyfantasytop14.LoginActivity;
+import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
 
 import java.util.concurrent.Executor;
 

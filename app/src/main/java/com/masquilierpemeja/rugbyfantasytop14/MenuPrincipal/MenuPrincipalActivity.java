@@ -1,4 +1,4 @@
-package com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity;
+package com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,10 +10,12 @@ import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
 import com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalPresenterImpl;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalView;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 
-public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrincipalView{
+public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrincipalView {
 
     Button btnGoToMonProfil, btnGoToCreerChampionnat, btnGoToRejoindreChampionnat, btnDeconnexion;
     private MenuPrincipalPresenterImpl mMenuPrincipalPresenterImpl;

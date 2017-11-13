@@ -23,5 +23,6 @@
     <color name="secondary">#c0c0c0</color>
     <color name="secondaryLight">#f3f3f3</color>
     <color name="secondaryDark">#909090</color>
+    <color name="black">#000000</color>
 
 </resources>

@@ -21,7 +21,7 @@
         <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity"/>
         <activity android:name=".CreerChampionnat.CreerChampionnatActivity"/>
         <activity android:name=".RejoindreChampionnat.RejoindreChampionnatActivity"/>
-        <activity android:name=".MenuPrincipalActivity.MenuPrincipalActivity">
+        <activity android:name=".MenuPrincipal.MenuPrincipalActivity">
 
         </activity>
 
