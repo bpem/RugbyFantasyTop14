@@ -31,8 +31,8 @@
             android:layout_marginBottom="10dp"
             android:hint="@string/hint_email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/secondaryDark"
-            android:textColorHint="@color/secondaryDark" />
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary" />
 
         <EditText
             android:id="@+id/password"
@@ -41,8 +41,8 @@
             android:layout_marginBottom="10dp"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
-            android:textColor="@color/secondaryDark"
-            android:textColorHint="@color/secondaryDark" />
+            android:textColor="@color/primary"
+            android:textColorHint="@color/primary" />
 
 
         <!-- Login Button -->
@@ -52,9 +52,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dip"
-            android:background="@null"
+            android:background="@color/primary"
             android:text="@string/btn_login"
-            android:textColor="@color/secondaryDark" />
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_reset_password"
@@ -64,7 +64,7 @@
             android:background="@null"
             android:text="@string/btn_forgot_password"
             android:textAllCaps="false"
-            android:textColor="@color/secondaryDark" />
+            android:textColor="@color/primaryDark" />
 
 
         <com.google.android.gms.common.SignInButton
@@ -82,7 +82,7 @@
             android:background="@null"
             android:text="@string/btn_link_to_register"
             android:textAllCaps="false"
-            android:textColor="@color/secondaryDark"
+            android:textColor="@color/primaryDark"
             android:textSize="15dp" />
 
 

@@ -12,20 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
+        <activity android:name=".Signup.SignupActivity" />
+        <activity android:name=".Login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".Signup.SignupActivity"></activity>
-        <activity android:name=".Login.LoginActivity"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter> </activity>
-        <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity"/>
-        <activity android:name=".CreerChampionnat.CreerChampionnatActivity"/>
-        <activity android:name=".RejoindreChampionnat.RejoindreChampionnatActivity"/>
-        <activity android:name=".MenuPrincipal.MenuPrincipalActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-
-
+        <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity" />
+        <activity android:name=".CreerChampionnat.CreerChampionnatActivity" />
+        <activity android:name=".RejoindreChampionnat.RejoindreChampionnatActivity" />
+        <activity android:name=".MenuPrincipal.MenuPrincipalActivity"></activity>
+        <activity android:name=".Profil.ProfilActivity"></activity>
 
     </application>
 

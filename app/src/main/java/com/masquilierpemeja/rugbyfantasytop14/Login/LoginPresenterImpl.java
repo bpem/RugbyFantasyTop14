@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.masquilierpemeja.rugbyfantasytop14.*;
-import com.masquilierpemeja.rugbyfantasytop14.Login.*;
+import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
 
 import java.util.concurrent.Executor;
 

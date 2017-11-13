@@ -12,10 +12,9 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
-
-import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.*;
 
 public class CreerChampionnatActivity extends AppCompatActivity implements CreerChampionnatView, CompoundButton.OnCheckedChangeListener {
 

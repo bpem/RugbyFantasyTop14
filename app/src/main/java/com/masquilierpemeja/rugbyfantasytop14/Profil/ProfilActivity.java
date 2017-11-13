@@ -39,7 +39,5 @@ public class ProfilActivity extends AppCompatActivity implements ProfilView{
             txtvEmail.setText(mail);
             txtvUid.setText(uid);
         }
-
-
     }
 }
