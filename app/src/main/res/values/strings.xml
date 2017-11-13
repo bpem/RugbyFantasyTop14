@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">RugbyFantasyTop14</string>
-
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
     <string name="minimum_password">Mot de passe trop court : entrez minimum 6 caractères !</string>
@@ -36,4 +35,20 @@
     <string name="facebook_application_id" translatable="false">294101641082812</string>
     <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
 
+    <string-array name="nombre_de_joueur">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+    </string-array>
 </resources>
