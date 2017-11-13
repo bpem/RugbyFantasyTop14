@@ -97,9 +97,9 @@ public class LoginInteractorImpl implements LoginInteractor {
             }
         }
 
-        else if (resultCode != 0) {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-        }
+//        else if (resultCode != 0) {
+//            callbackManager.onActivityResult(requestCode, resultCode, data);
+//        }
     }
 
     public void firebaseAuthWithGoogle(GoogleSignInAccount account, final FirebaseAuth auth, final onLoginFinishedListener listener) {

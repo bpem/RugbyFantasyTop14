@@ -21,6 +21,7 @@ public class MotDePasseOublieInteractorImpl implements MotDePasseOublieInteracto
 
         if (TextUtils.isEmpty(email)) {
             listener.isEmptyEmail("Veuillez rentrer une adresse mail! ");
+            return;
         }
 
         auth.sendPasswordResetEmail(email)
@@ -28,11 +29,12 @@ public class MotDePasseOublieInteractorImpl implements MotDePasseOublieInteracto
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                        listener.registrationSucced("L'enregistrement a bien été effectué !");
+                            listener.motDePasseEnvoyeSuccess("Un nouveau mot de passe vous a été envoyé.");
+                            return;
 
                         } else {
-                           listener.registrationUnsucced("L'enregistrement a échoué :/");
-
+                            listener.motDePasseEnvoyeFail("L'envoi du nouveau mot de passe n'a pas fonctionné.");
+                            return;
 
                         }
 
@@ -40,6 +42,5 @@ public class MotDePasseOublieInteractorImpl implements MotDePasseOublieInteracto
                 });
 
 
-
-        }
+    }
 }

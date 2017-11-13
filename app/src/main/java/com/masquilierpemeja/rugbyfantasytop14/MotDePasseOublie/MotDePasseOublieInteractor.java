@@ -11,8 +11,8 @@ public interface MotDePasseOublieInteractor {
     interface onMotDePasseOublieFinishedListener {
 
         void isEmptyEmail(String message);
-        void registrationSucced(String message);
-        void registrationUnsucced(String message);
+       void motDePasseEnvoyeSuccess(String message);
+        void motDePasseEnvoyeFail(String message);
 
     }
 

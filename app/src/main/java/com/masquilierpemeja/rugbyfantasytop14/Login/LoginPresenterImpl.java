@@ -54,7 +54,6 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.onLog
         }
     }
 
-    @Override
     public void onClickFacebook(LoginButton facebookButton, CallbackManager callbackManager) {
         if (mLoginView != null ){
             mLoginInteractorImpl.onClickFacebook(facebookButton, callbackManager, this);

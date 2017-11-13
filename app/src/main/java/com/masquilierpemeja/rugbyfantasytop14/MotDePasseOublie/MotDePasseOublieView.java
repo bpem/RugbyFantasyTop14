@@ -6,8 +6,8 @@ package com.masquilierpemeja.rugbyfantasytop14.MotDePasseOublie;
 
 public interface MotDePasseOublieView {
     void isEmptyEmail(String message);
-    void registrationSucced(String message);
-    void registrationUnsucced(String message);
+    void motDePasseOublieSucced(String message);
+    void motDePasseOublieUnsucced(String message);
 
 
 }

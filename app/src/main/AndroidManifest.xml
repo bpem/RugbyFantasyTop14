@@ -13,14 +13,16 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity" />
         <activity android:name=".Signup.SignupActivity"></activity>
-        <activity android:name=".Login.LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".Login.LoginActivity"><intent-filter>
+        <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
         </activity>
-        <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity"></activity>
+        <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity">
+        </activity>
+
+
 
     </application>
 

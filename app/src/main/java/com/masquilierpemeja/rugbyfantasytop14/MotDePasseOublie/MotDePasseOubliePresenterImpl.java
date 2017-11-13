@@ -23,16 +23,22 @@ public class MotDePasseOubliePresenterImpl implements MotDePasseOubliePresenter,
 
     @Override
     public void isEmptyEmail(String message) {
-
+        if (mMotDePasseOublieView != null ){
+            mMotDePasseOublieView.isEmptyEmail(message);
+        }
     }
 
     @Override
-    public void registrationSucced(String message) {
-
+    public void motDePasseEnvoyeSuccess(String message) {
+        if (mMotDePasseOublieView != null ){
+            mMotDePasseOublieView.motDePasseOublieSucced(message);
+        }
     }
 
     @Override
-    public void registrationUnsucced(String message) {
-
+    public void motDePasseEnvoyeFail(String message) {
+        if (mMotDePasseOublieView != null ){
+            mMotDePasseOublieView.motDePasseOublieUnsucced(message);
+        }
     }
 }

@@ -31,6 +31,6 @@ public interface LoginInteractor {
 
     void loginWithMail(FirebaseAuth auth, String email, String password, onLoginFinishedListener Listener);
     void onActivityResult(int requestCode, int resultCode, Intent data,  FirebaseAuth auth, onLoginFinishedListener listener);
-    void onClickFacebook(LoginButton facebookButton, CallbackManager mCallbackManager , onLoginFinishedListener listener);
+   void onClickFacebook(LoginButton facebookButton, CallbackManager mCallbackManager , onLoginFinishedListener listener);
    void firebaseAuthWithGoogle(GoogleSignInAccount account, final FirebaseAuth auth, final onLoginFinishedListener listener);
 }

@@ -23,6 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MotDePasseOublie.MotDePasseOublieActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.Signup.SignupActivity;
 
@@ -88,7 +89,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             @Override
             public void onClick(View view) {
 
-                getLoginPresenter().onCompleteMailPassword(inputEmail.getText().toString(),inputPassword.getText().toString(),auth);
+                getLoginPresenter().onCompleteMailPassword(inputEmail.getText().toString(),inputPassword.getText().toString(), auth);
             }
         });
 
@@ -129,6 +130,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
+
+        btnReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, MotDePasseOublieActivity.class));
+            }
+        });
+
 
 
     }
