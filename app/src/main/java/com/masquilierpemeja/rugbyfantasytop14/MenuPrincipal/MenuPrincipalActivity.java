@@ -1,30 +1,24 @@
-package com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity;
+package com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import com.google.firebase.auth.FirebaseAuth;
+
 import com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity;
-import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalView;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 
-public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrincipalView{
+public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrincipalView {
 
     Button btnGoToMonProfil, btnGoToCreerChampionnat, btnGoToRejoindreChampionnat, btnDeconnexion;
-    private MenuPrincipalPresenterImpl mMenuPrincipalPresenterImpl;
-    private FirebaseAuth mFirebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_principal);
-
-        mFirebaseAuth = FirebaseAuth.getInstance();
 
         btnGoToMonProfil = (Button) findViewById(R.id.btn_go_to_mon_profil);
         btnGoToCreerChampionnat = (Button) findViewById(R.id.btn_go_to_creer_championnat);
@@ -45,25 +39,7 @@ public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrin
             }
         });
 
-        btnDeconnexion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-                mFirebaseAuth.signOut();
-                startActivity(new Intent(MenuPrincipalActivity.this, LoginActivity.class));
-                finish();
-            }
-
-
-    });
-
-    }
-
-
-    public MenuPrincipalPresenterImpl getMenuPrincipalPresenterImpl() {
-        if (mMenuPrincipalPresenterImpl == null) mMenuPrincipalPresenterImpl = new MenuPrincipalPresenterImpl(this);
-        return mMenuPrincipalPresenterImpl;
     }
 
     @Override

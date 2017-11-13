@@ -23,7 +23,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
-import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipalActivity.MenuPrincipalActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MotDePasseOublie.MotDePasseOublieActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.Signup.SignupActivity;
