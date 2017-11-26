@@ -137,7 +137,7 @@ public class LoginInteractorImpl implements LoginInteractor {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 Log.d(TAG, "facebook:onSuccess:" + loginResult);
-                listener.onFacebookSuccess();
+                listener.onFacebookSuccess(loginResult);
             }
 
             @Override

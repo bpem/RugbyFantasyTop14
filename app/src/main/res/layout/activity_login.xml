@@ -19,8 +19,8 @@
         tools:ignore="MissingConstraints">
 
         <ImageView
-            android:layout_width="246dp"
-            android:layout_height="119dp"
+            android:layout_width="215dp"
+            android:layout_height="71dp"
             android:src="@drawable/image_rugby" />
 
 
@@ -72,6 +72,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center" />
+
+     <!--   <com.facebook.login.widget.LoginButton
+            android:id="@+id/button_facebook_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@color/colorAccent"/>-->
 
 
         <Button

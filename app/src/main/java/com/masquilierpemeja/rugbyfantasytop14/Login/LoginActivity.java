@@ -2,6 +2,7 @@ package com.masquilierpemeja.rugbyfantasytop14.Login;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,8 +12,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
+import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -20,6 +23,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
@@ -40,7 +48,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private Button btnSignup, btnLogin, btnReset, signupButton;
     private GoogleSignInClient mGoogleSignInClient;
     private SignInButton googleButton;
-    private LoginButton facebookButton;
+   // private LoginButton facebookButton;
     private LoginPresenterImpl mLoginPresenter;
 
 
@@ -57,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
 
 
-//        FacebookSdk.sdkInitialize(getApplicationContext());
+       // FacebookSdk.sdkInitialize(getApplicationContext());
 
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
@@ -115,15 +123,15 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
             }
         });
 
-//        facebookButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                callbackManager = CallbackManager.Factory.create();
-//                facebookButton.setReadPermissions("email", "public_profile");
-//                getLoginPresenter().onClickFacebook(facebookButton, callbackManager);
-//            }
-//        });
+/*        facebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                callbackManager = CallbackManager.Factory.create();
+                facebookButton.setReadPermissions("email", "public_profile");
+                getLoginPresenter().onClickFacebook(facebookButton, callbackManager);
+            }
+        });*/
 
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,7 +186,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
         googleButton = (SignInButton) findViewById(R.id.sign_in_button_google);
-        //facebookButton = (LoginButton) findViewById(R.id.sign_in_button_facebook);
+        //facebookButton = (LoginButton) findViewById(R.id.button_facebook_login);
         signupButton = (Button) findViewById(R.id.btn_signup);
 
 
@@ -225,6 +233,31 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     @Override
     public void setOnFacebookError(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void setOnFacebookSuccess(LoginResult loginResult) {
+        AccessToken token = loginResult.getAccessToken();
+
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+
+        auth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            navigateToMain();
+                            return;
+                        } else {
+                            // If sign in fails, display a message to the user.
+
+                            Toast.makeText(LoginActivity.this, "Authentication Facebook failed.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
     }
 
     @Override

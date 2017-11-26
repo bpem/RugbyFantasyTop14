@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
+import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -110,9 +111,9 @@ public class LoginPresenterImpl implements LoginPresenter, LoginInteractor.onLog
     }
 
     @Override
-    public void onFacebookSuccess() {
+    public void onFacebookSuccess(LoginResult loginResult) {
         if (mLoginView != null ){
-            mLoginView.navigateToMain();
+            mLoginView.setOnFacebookSuccess(loginResult);
         }
     }
 
