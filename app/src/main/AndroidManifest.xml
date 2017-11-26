@@ -23,9 +23,9 @@
         <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity" />
         <activity android:name=".CreerChampionnat.CreerChampionnatActivity" />
         <activity android:name=".RejoindreChampionnat.RejoindreChampionnatActivity" />
-        <activity android:name=".MenuPrincipal.MenuPrincipalActivity"></activity>
-        <activity android:name=".Profil.ProfilActivity"></activity>
-
+        <activity android:name=".MenuPrincipal.MenuPrincipalActivity" />
+        <activity android:name=".Profil.ProfilActivity" />
+        <activity android:name=".PageChampionnat.PageChampionnatActivity" />
     </application>
 
 </manifest>

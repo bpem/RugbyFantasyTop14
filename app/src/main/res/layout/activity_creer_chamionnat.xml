@@ -8,43 +8,86 @@
     android:gravity="center_horizontal"
     tools:context="com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity">
 
-    <EditText
-        android:id="@+id/ed_nom_championnat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/sp_nombre_de_joueur"
-        android:layout_alignParentStart="true"
-        android:hint="Nom du championnat"
-        android:inputType="textCapWords" />
 
-    <Spinner
-        android:id="@+id/sp_nombre_de_joueur"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/sw_est_public"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="62dp"
-        android:padding="20dp">
-    </Spinner>
 
-    <Switch
-        android:id="@+id/sw_est_public"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:padding="30dp"
-        android:text="Privé" />
+        android:layout_marginTop="5dp"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/ed_mot_de_passe"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sw_est_public"
-        android:layout_toEndOf="@+id/pb_load"
-        android:hint="Mot de passe"
-        android:inputType="textCapWords"
-        android:visibility="gone" />
+        <EditText
+            android:id="@+id/ed_nom_championnat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/sp_nombre_de_joueur"
+            android:layout_alignParentStart="true"
+            android:hint="Nom du championnat"
+            android:inputType="textCapWords"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"/>
+
+        <Spinner
+            android:id="@+id/sp_nombre_de_joueur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/sw_est_public"
+            android:layout_alignParentStart="true"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            >
+        </Spinner>
+
+        <Switch
+            android:id="@+id/sw_est_public"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:text="Privé" />
+
+
+        <EditText
+            android:id="@+id/ed_mot_de_passe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sw_est_public"
+            android:layout_toEndOf="@+id/pb_load"
+            android:hint="Mot de passe"
+            android:inputType="textCapWords"
+            android:layout_margin="5dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:visibility="gone"/>
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/pb_load"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_creer_championnat"
@@ -52,16 +95,16 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="25dp"
-        android:background="@color/primary"
-        android:text="Créer mon championnat" />
-
-    <ProgressBar
-        android:visibility="gone"
-        android:id="@+id/pb_load"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:backgroundTint="@color/primary"
+        android:text="Créer mon championnat"
+        android:textColor="@color/secondaryLight"
+        android:elevation="4dp"
+        android:layout_margin="5dp"
+        android:layout_marginBottom="3dp"
+        android:layout_marginTop="3dp"
         />
+
+
 
 
 
