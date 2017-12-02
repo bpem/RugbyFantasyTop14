@@ -3,25 +3,40 @@ package com.masquilierpemeja.rugbyfantasytop14.Signup;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.masquilierpemeja.rugbyfantasytop14.*;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManager;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.List;
+
+import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 
 /**
  * Created by Pierre on 12/11/2017.
  */
 
 public class SignupInteractorImpl implements SignupInteractor {
-    @Override
-    public void onClickSignup(String mail, String password, FirebaseAuth auth, final SignupInteractor.onSignupFinishedListener Listener) {
 
+    // success : ajout d'un utilisateur à la database
+    private Boolean success = true;
+    private DatabaseManager db;
+    private FirebaseAuth globalAuth;
+    @Override
+    public void onClickSignup(final String mail, String password, FirebaseAuth auth, final SignupInteractor.onSignupFinishedListener Listener) {
+
+
+        globalAuth = auth;
         if (TextUtils.isEmpty(mail)) {
             Listener.isEmptyMail("Veuillez rentrer une adresse mail");
             return;
@@ -38,24 +53,57 @@ public class SignupInteractorImpl implements SignupInteractor {
         }
 
         auth.createUserWithEmailAndPassword(mail, password)
-                .addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                // LISTENER DU SUCCESS DE L'ENREGISTREMENT VIA L'ADRESSE MAIL
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                    public void onSuccess(AuthResult authResult) {
+                        if (addUserOnDatabse(mail)){
 
-
-                        if (!task.isSuccessful()) {
                             Listener.signupIsSuccessful("Vous êtes maintenant enregistrés! ");
-                                return;
+                            return;
+                        }
+                        else {
 
-                        } else {
                             Listener.signupFailed("L'enregistrement a échoué");
-
-
+                            return;
                         }
                     }
+                })
+
+                // LISTENER DU FAILURE DE L'ENREGISTREMENT VIA L'ADRESSE MAIL
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.i("addUserwithMailAdress", "FAILURE");
+                        Listener.signupFailed("L'enregistrement a échoué");
+                        return;
+                    }
                 });
+    }
 
-
-
+    // AJOUTE L'UTILISATEUR A LA DATABASE
+    // RENVOI TRUE SI L'AJOUT A FONCTIONNE
+    public boolean addUserOnDatabse(final String email){
+        db = DatabaseManager.getInstance();
+        FirebaseUser currentFirebaseUser = globalAuth.getCurrentUser() ;
+        String currentFirebaseUserID = currentFirebaseUser.getUid();
+        db.setUserOnDatabase(new User(email, currentFirebaseUserID))
+                .addOnSuccessListener
+                        (new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Log.i("addUserOnDatabse", "SUCCESS");
+                                success = true;
+                            }
+                        })
+                .addOnFailureListener
+                        (new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.i("addUserOnDatabse", "FAILURE");
+                                success = false;
+                            }
+                        });
+        return success;
     }
 }

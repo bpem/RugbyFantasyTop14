@@ -26,6 +26,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.masquilierpemeja.rugbyfantasytop14.*;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManager;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.concurrent.Executor;
 
@@ -40,8 +42,9 @@ public class LoginInteractorImpl implements LoginInteractor {
     private static final int RC_SIGN_IN = 2;
     CallbackManager callbackManager;
 
+
     @Override
-    public void loginWithMail(FirebaseAuth auth, String email, String password, final onLoginFinishedListener listener) {
+    public void loginWithMail(FirebaseAuth auth, final String email, String password, final onLoginFinishedListener listener) {
 
 
         if (TextUtils.isEmpty(email)){
@@ -69,6 +72,11 @@ public class LoginInteractorImpl implements LoginInteractor {
                     }
                 });
     }
+
+
+
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data, FirebaseAuth auth, onLoginFinishedListener listener) {

@@ -34,7 +34,6 @@ public class DatabaseManager {
     private static DatabaseManager INSTANCE = new DatabaseManager();
 
 
-
     /////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////CONSTRUCTEURS//////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////
@@ -51,7 +50,7 @@ public class DatabaseManager {
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    public void getUser(final String uid, final Result<User> result)
+    public void getUserOnDatabse(final String uid, final Result<User> result)
     {
         ref.users.child(uid).addListenerForSingleValueEvent(new ValueEventListener()
         {
@@ -76,7 +75,7 @@ public class DatabaseManager {
     }
 
 
-    public Task<Void> setUser(final User user)
+    public Task<Void> setUserOnDatabase(final User user)
     {
         return ref.users.child(user.getUserID()).setValue(user);
     }
@@ -130,8 +129,6 @@ public class DatabaseManager {
             Log.d("DATABASE ERROR", error.getMessage());
         };
     }
-
-
 
 
 }
