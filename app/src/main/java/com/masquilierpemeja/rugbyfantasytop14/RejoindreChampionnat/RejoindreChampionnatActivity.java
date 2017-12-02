@@ -35,6 +35,7 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
         lvChampionnats.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 dialog();
             }
         });
@@ -77,9 +78,9 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
                 .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        navigateToPageChampionnat();
                         Toast.makeText(getApplicationContext(), "Vous avez rejoint le championnat", Toast.LENGTH_SHORT).show();
                     }
                 }).create().show();
-
     }
 }

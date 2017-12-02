@@ -10,7 +10,7 @@
 
 
     <LinearLayout
-        android:layout_width="388dp"
+        android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="@color/secondaryLight"
         android:gravity="center"
@@ -32,7 +32,7 @@
             android:gravity="center_horizontal"
             android:padding="@dimen/activity_horizontal_margin"
             android:text="@string/enregistrer_adresse_mail"
-            android:textColor="@color/primary"
+            android:textColor="@color/primaryDark"
             android:textSize="14dp" />
 
 
@@ -82,7 +82,7 @@
             android:background="@null"
             android:text="@string/btn_link_to_login"
             android:textAllCaps="false"
-            android:textColor="@color/primary"
+            android:textColor="@color/primaryDark"
             android:textSize="15dp" />
     </LinearLayout>
 

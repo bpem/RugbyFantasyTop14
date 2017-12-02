@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatActivity">
 
+
+    <TextView
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="Bienvenue dans votre championnat"
+        android:textColor="@color/primaryDark"
+        android:textStyle="bold"
+        android:textSize="20dp" />
 </android.support.constraint.ConstraintLayout>
