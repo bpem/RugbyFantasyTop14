@@ -19,18 +19,18 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
 
 
     DatabaseReference myRef;
-    String keyChamp, nomChamp, mdpChamp;
+    /*String keyChamp, nomChamp, mdpChamp;
     Boolean estPrive;
-    int nbMaxChamp;
-    ArrayList<RejoindreChampionnatInteractorImpl> desChampionnats = new ArrayList<>();
+    int nbMaxChamp;*/
+    ArrayList<String> desChampionnats = new ArrayList<>();
 
-    public RejoindreChampionnatInteractorImpl(String keyChamp, String nomChamp, String mdpChamp, Boolean estPrive, int nbMaxChamp) {
+  /**  public RejoindreChampionnatInteractorImpl(String keyChamp, String nomChamp, String mdpChamp, Boolean estPrive, int nbMaxChamp) {
         this.keyChamp = keyChamp;
         this.nomChamp = nomChamp;
         this.mdpChamp = mdpChamp;
         this.estPrive = estPrive;
         this.nbMaxChamp = nbMaxChamp;
-    }
+    } **/
 
     @Override
     public void rejoindreChampionnat(String keyChampionnat) {

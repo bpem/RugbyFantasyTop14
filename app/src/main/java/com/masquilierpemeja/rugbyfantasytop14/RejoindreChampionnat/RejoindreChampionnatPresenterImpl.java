@@ -17,7 +17,7 @@ public class RejoindreChampionnatPresenterImpl implements RejoindreChampionnatPr
 
     public RejoindreChampionnatPresenterImpl (RejoindreChampionnatView mRejoindreChampionnatView){
         this.mRejoindreChampionnatView = mRejoindreChampionnatView;
-        mRejoindreChampionnatInteractor = new RejoindreChampionnatInteractorImpl();
+       mRejoindreChampionnatInteractor = new RejoindreChampionnatInteractorImpl();
     }
 
     @Override
