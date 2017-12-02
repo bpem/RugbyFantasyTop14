@@ -11,6 +11,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import com.google.android.gms.tasks.Task;
 
+import bolts.Bolts;
+
 
 /**
  * Created by Pierre on 02/12/2017.
@@ -32,6 +34,7 @@ public class DatabaseManager {
     private Reference ref;
     private User user;
     private static DatabaseManager INSTANCE = new DatabaseManager();
+    private Boolean isUserExist;
 
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -72,6 +75,27 @@ public class DatabaseManager {
                 result.onError(databaseError);
             }
         });
+    }
+
+    public void isUserExist(final String uid, final ResultBoolean<Boolean> resultBoolean){
+
+        ref.users.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    resultBoolean.onSuccess(true);
+                }
+                else {
+                    resultBoolean.onSuccess(false);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 
@@ -128,6 +152,20 @@ public class DatabaseManager {
         {
             Log.d("DATABASE ERROR", error.getMessage());
         };
+    }
+
+    public static abstract class ResultBoolean<Boolean>
+    {
+        public void onComplete() {}
+
+        public abstract void onSuccess(Boolean bool);
+
+        public void onFailure()
+        {
+
+        }
+
+
     }
 
 
