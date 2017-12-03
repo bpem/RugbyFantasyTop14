@@ -19,6 +19,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +28,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.masquilierpemeja.rugbyfantasytop14.*;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManager;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.concurrent.Executor;
 
@@ -39,9 +43,12 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     private static final int RC_SIGN_IN = 2;
     CallbackManager callbackManager;
+    DatabaseManager db;
+    Boolean success;
+
 
     @Override
-    public void loginWithMail(FirebaseAuth auth, String email, String password, final onLoginFinishedListener listener) {
+    public void loginWithMail(FirebaseAuth auth, final String email, String password, final onLoginFinishedListener listener) {
 
 
         if (TextUtils.isEmpty(email)){
@@ -69,6 +76,11 @@ public class LoginInteractorImpl implements LoginInteractor {
                     }
                 });
     }
+
+
+
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data, FirebaseAuth auth, onLoginFinishedListener listener) {
@@ -107,26 +119,79 @@ public class LoginInteractorImpl implements LoginInteractor {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
 
+        final  String email = account.getEmail();
+
             auth.signInWithCredential(credential)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "signInWithCredential:success");
-                                FirebaseUser user = auth.getCurrentUser();
-                                listener.onGoogleSuccess();
-    //                            updateUI(user);
+                                FirebaseUser currentFirebaseUser = auth.getCurrentUser() ;
+                                String currentFirebaseUserID = currentFirebaseUser.getUid();
+
+                                if (updateUI(currentFirebaseUserID, email)) {
+                                    Log.d(TAG, "signInWithCredential:success");
+                                    FirebaseUser user = auth.getCurrentUser();
+                                    listener.onGoogleSuccess();
+                                    return;
+                                }
+
+                                else {
+
+                                    listener.onGoogleFailure("Connexion impossible avec Google");
+                                    return;
+                                }
+
                             } else {
                                 // If sign in fails, display a message to the user.
                                 Log.w(TAG, "signInWithCredential:failure", task.getException());
                                 listener.onGoogleFailure("Connexion impossible avec Google");
-
+                                return;
                             }
-
                         }
                     });
+    }
 
+    // AJOUTE L'UTILISATEUR A LA DATABASE
+    // RENVOI TRUE SI L'AJOUT A FONCTIONNE
+
+    // Si l'utilisateur existe déjà, renvoit true par défault.
+    public boolean updateUI(final String currentFirebaseUserID, final String email){
+
+        success = true;
+        db = DatabaseManager.getInstance();
+
+        // Si l'utilisateur n'existe pas déja dans la database, on créer un nouvel utilisateur
+        // avec son id dans la base de donnée
+
+        db.isUserExist(currentFirebaseUserID, new DatabaseManager.ResultBoolean<Boolean>() {
+            @Override
+            public void onSuccess(Boolean bool) {
+
+                db.setUserOnDatabase(new User(email, currentFirebaseUserID))
+                        .addOnSuccessListener
+                                (new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        Log.i("addUserOnDatabse", "SUCCESS");
+                                        success = true;
+                                    }
+                                })
+                        .addOnFailureListener
+                                (new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.i("addUserOnDatabse", "FAILURE");
+                                        success = false;
+                                    }
+                                });
+
+            }
+        });
+
+
+        return success;
     }
 
     @Override
