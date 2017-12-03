@@ -1,8 +1,12 @@
 package com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat;
 
+import android.support.annotation.NonNull;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -11,7 +15,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerInformationClassement;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerUser;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.InformationClassement;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.ArrayList;
@@ -27,6 +33,7 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
     Championnat unChampionnat;
     ArrayList<Championnat> desChampionnats = new ArrayList<>();
     DatabaseManagerUser db;
+    DatabaseManagerInformationClassement dbInformationClassement;
     FirebaseAuth auth;
 
     @Override
@@ -40,10 +47,31 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
                 user.setEstDansUnChampionnat(true);
                 user.setKeyChampionnat(keyChampionnat);
                 db.setUserOnDatabase(user);
+                AjouterClassementAUser(keyChampionnat);
             }
         });
     }
 
+    private void AjouterClassementAUser(String keyChampionnat){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser currentFirebaseUser = auth.getCurrentUser() ;
+        String IDcurrentFirebaseUser = currentFirebaseUser.getUid();
+        dbInformationClassement = DatabaseManagerInformationClassement.getInstance();
+        dbInformationClassement.setInformationClassementOnDatabase(new InformationClassement(IDcurrentFirebaseUser, keyChampionnat))
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+    }
     @Override
     public void listerChampionnat(final ListView uneListe, final ArrayAdapter<Championnat> adapter, final ArrayList<Championnat> champArray) {
 

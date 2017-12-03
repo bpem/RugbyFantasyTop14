@@ -31,6 +31,9 @@ public class InformationClassement {
     private DatabaseManagerInformationClassement dbInfoClassement;
 
 
+    private String keyChampionnat;
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////CONSTRUCTEURS//////////////////////////////////////////////////
@@ -39,28 +42,11 @@ public class InformationClassement {
     public InformationClassement() {
     }
 
-    public InformationClassement(String user_ID){
+    public InformationClassement(String user_ID, String keyChampionnat){
 
         this.user_ID = user_ID;
+        this.keyChampionnat = keyChampionnat;
 
-/*        dbInfoClassement = DatabaseManagerInformationClassement.getInstance();
-
-        dbInfoClassement.setInformationClassementOnDatabase(new InformationClassement(user_ID))
-                .addOnSuccessListener
-                        (new OnSuccessListener<Void>() {
-                             @Override
-                             public void onSuccess(Void aVoid) {
-                                 Log.i("info_classement_add", "SUCCESS");
-                                 return;
-                             }
-                         })
-                .addOnFailureListener
-                        (new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                return;
-                            }
-                        });*/
     }
 
 
@@ -75,8 +61,6 @@ public class InformationClassement {
     public void setDbInfoClassement(DatabaseManagerInformationClassement dbInfoClassement) {
         this.dbInfoClassement = dbInfoClassement;
     }
-
-
 
     public String getUser_ID() {
         return user_ID;
@@ -150,6 +134,15 @@ public class InformationClassement {
     public void setPtsTotal(int ptsTotal) {
         this.ptsTotal = ptsTotal;
     }
+
+    public String getKeyChampionnat() {
+        return keyChampionnat;
+    }
+
+    public void setKeyChampionnat(String keyChampionnat) {
+        this.keyChampionnat = keyChampionnat;
+    }
+
 
 
 

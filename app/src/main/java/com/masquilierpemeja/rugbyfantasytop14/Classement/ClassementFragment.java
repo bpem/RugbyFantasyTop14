@@ -20,46 +20,23 @@ import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Information
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 
+import java.util.List;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClassementFragment extends Fragment {
+public class ClassementFragment extends Fragment implements ClassementView {
 
     private DatabaseManagerInformationClassement dbInformationClassement;
     private String IDcurrentFirebaseUser;
+    private ClassementPresenterImpl mClassementPresenterImpl;
+    private List<InformationClassement> listInformationClassementTriée;
 
     public ClassementFragment() {
 
-        RecupererUserCourant();
-        AjouterClassementAUser();
-        // Required empty public constructor
-    }
+        mClassementPresenterImpl = new ClassementPresenterImpl(this);
+        getListInfosClassementTriée();
 
-
-    private void RecupererUserCourant(){
-
-
-
-    }
-
-    private void AjouterClassementAUser(){
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser currentFirebaseUser = auth.getCurrentUser() ;
-        IDcurrentFirebaseUser = currentFirebaseUser.getUid();
-        dbInformationClassement = DatabaseManagerInformationClassement.getInstance();
-        dbInformationClassement.setInformationClassementOnDatabase(new InformationClassement(IDcurrentFirebaseUser))
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(getActivity() , "AJOUT CLASSEMENT !!!!!!!", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
     }
 
 
@@ -70,4 +47,17 @@ public class ClassementFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_classement, container, false);
     }
 
+    @Override
+    public void getListInfosClassementTriée() {
+       mClassementPresenterImpl.getListInfosClassementTriée();
+
+    }
+
+    public void sendListInformationClassement(List<InformationClassement> listInformationClassement){
+
+
+        Toast.makeText(getContext(), "user ID ! !" +  listInformationClassement.get(0).getUser_ID(), Toast.LENGTH_SHORT).show();
+
+
+    }
 }

@@ -11,6 +11,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Pierre on 03/12/2017.
  */
@@ -67,6 +70,38 @@ public class DatabaseManagerInformationClassement {
         });
     }
 
+    public void getListOfInfosMatchsOnDatabase(final String uid, final DatabaseManagerInformationClassement.Result< List<InformationClassement>  > result){
+
+        ref.informationsClassementRef.addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+
+            {
+                List<InformationClassement> listInformationClassement = new ArrayList<InformationClassement>() ;
+
+                for (DataSnapshot dt : dataSnapshot.getChildren()){
+
+                    InformationClassement informationClassement = dt.getValue(InformationClassement.class);
+                    if (informationClassement.getUser_ID().equals(uid) ){
+                        listInformationClassement.add(informationClassement);
+                    }
+                }
+
+                result.onSuccess(listInformationClassement);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+
+        });
+
+
+    }
+
 
     public Task<Void> setInformationClassementOnDatabase(final InformationClassement informationClassement)
 
@@ -117,6 +152,8 @@ public class DatabaseManagerInformationClassement {
             Log.d("DATABASE ERROR", error.getMessage());
         };
     }
+
+
 
 
 }

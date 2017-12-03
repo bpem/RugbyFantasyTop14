@@ -12,6 +12,7 @@ public class Championnat {
     private Boolean estPrive;
     private int nbMaxChamp;
 
+
     public Championnat(){
 
     }
