@@ -41,7 +41,6 @@ public class ProfilActivity extends AppCompatActivity implements ProfilView{
 
             tvNomUtilisateur.setText(nom);
             txtvEmail.setText(mail);
-            txtvUid.setText(uid);
         }
     }
 
@@ -52,6 +51,11 @@ public class ProfilActivity extends AppCompatActivity implements ProfilView{
 
     @Override
     public void sendUser(User user) {
-        Toast.makeText(this,"Yoolo" + user.getUserID(), Toast.LENGTH_LONG).show();
+        if(user.getEstDansUnChampionnat())
+            txtvUid.setText("Vous avez rejoins un tournois !");
+        else
+            txtvUid.setText("Vous n'avez toujours pas rejoins de tournois !");
+
+
     }
 }
