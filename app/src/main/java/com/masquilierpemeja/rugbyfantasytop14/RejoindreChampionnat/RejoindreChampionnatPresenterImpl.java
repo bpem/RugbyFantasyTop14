@@ -3,6 +3,8 @@ package com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
+
 import java.util.ArrayList;
 
 /**
@@ -26,7 +28,7 @@ public class RejoindreChampionnatPresenterImpl implements RejoindreChampionnatPr
     }
 
     @Override
-    public void listerChampionnat(ListView uneListe, final ArrayAdapter<String> adapter,final ArrayList<String> champArray) {
+    public void listerChampionnat(ListView uneListe, final ArrayAdapter<Championnat> adapter, final ArrayList<Championnat> champArray) {
         if (mRejoindreChampionnatView != null) {
             mRejoindreChampionnatView.showProgress();
             mRejoindreChampionnatInteractor.listerChampionnat(uneListe, adapter, champArray);

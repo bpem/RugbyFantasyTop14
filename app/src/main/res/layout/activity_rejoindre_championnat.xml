@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity">
 
+
     <ListView
         android:id="@+id/lv_championnats"
         android:layout_width="match_parent"

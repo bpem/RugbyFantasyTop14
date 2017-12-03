@@ -8,6 +8,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
 
 import java.util.ArrayList;
 
@@ -19,18 +20,8 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
 
 
     DatabaseReference myRef;
-    String keyChamp, nomChamp, mdpChamp;
-    Boolean estPrive;
-    int nbMaxChamp;
-    ArrayList<RejoindreChampionnatInteractorImpl> desChampionnats = new ArrayList<>();
-
-    public RejoindreChampionnatInteractorImpl(String keyChamp, String nomChamp, String mdpChamp, Boolean estPrive, int nbMaxChamp) {
-        this.keyChamp = keyChamp;
-        this.nomChamp = nomChamp;
-        this.mdpChamp = mdpChamp;
-        this.estPrive = estPrive;
-        this.nbMaxChamp = nbMaxChamp;
-    }
+    Championnat unChampionnat;
+    ArrayList<Championnat> desChampionnats = new ArrayList<>();
 
     @Override
     public void rejoindreChampionnat(String keyChampionnat) {
@@ -38,14 +29,23 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
     }
 
     @Override
-    public void listerChampionnat(ListView uneListe, final ArrayAdapter<String> adapter,final ArrayList<String> champArray) {
+    public void listerChampionnat(final ListView uneListe, final ArrayAdapter<Championnat> adapter, final ArrayList<Championnat> champArray) {
+
         uneListe.setAdapter(adapter);
         myRef = FirebaseDatabase.getInstance().getReference("Championnat");
 
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                champArray.add(dataSnapshot.child("nom").getValue(String.class));
+                unChampionnat = new Championnat(dataSnapshot.getKey(),
+                        dataSnapshot.child("nom").getValue(String.class),
+                        dataSnapshot.child("motDePasse").getValue(String.class),
+                        dataSnapshot.child("prive").getValue(Boolean.class),
+                        dataSnapshot.child("nombreMax").getValue(Integer.class));
+
+
+                champArray.add(unChampionnat);
+
                 adapter.notifyDataSetChanged();
             }
 
