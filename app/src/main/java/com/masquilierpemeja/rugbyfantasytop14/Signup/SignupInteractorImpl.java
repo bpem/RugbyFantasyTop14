@@ -1,26 +1,16 @@
 package com.masquilierpemeja.rugbyfantasytop14.Signup;
 
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.masquilierpemeja.rugbyfantasytop14.*;
-import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManager;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerUser;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
-
-import java.util.List;
-
-import static android.webkit.ConsoleMessage.MessageLevel.LOG;
 
 /**
  * Created by Pierre on 12/11/2017.
@@ -30,7 +20,7 @@ public class SignupInteractorImpl implements SignupInteractor {
 
     // success : ajout d'un utilisateur à la database
     private Boolean success = true;
-    private DatabaseManager db;
+    private DatabaseManagerUser db;
     private FirebaseAuth globalAuth;
     @Override
     public void onClickSignup(final String mail, String password, FirebaseAuth auth, final SignupInteractor.onSignupFinishedListener Listener) {
@@ -84,7 +74,7 @@ public class SignupInteractorImpl implements SignupInteractor {
     // AJOUTE L'UTILISATEUR A LA DATABASE
     // RENVOI TRUE SI L'AJOUT A FONCTIONNE
     public boolean addUserOnDatabse(final String email){
-        db = DatabaseManager.getInstance();
+        db = DatabaseManagerUser.getInstance();
         FirebaseUser currentFirebaseUser = globalAuth.getCurrentUser() ;
         String currentFirebaseUserID = currentFirebaseUser.getUid();
         db.setUserOnDatabase(new User(email, currentFirebaseUserID, false,""))

@@ -1,20 +1,15 @@
 package com.masquilierpemeja.rugbyfantasytop14.Login;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
@@ -27,11 +22,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.masquilierpemeja.rugbyfantasytop14.*;
-import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManager;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerUser;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
-
-import java.util.concurrent.Executor;
 
 import static android.content.ContentValues.TAG;
 
@@ -43,7 +35,7 @@ public class LoginInteractorImpl implements LoginInteractor {
 
     private static final int RC_SIGN_IN = 2;
     CallbackManager callbackManager;
-    DatabaseManager db;
+    DatabaseManagerUser db;
     Boolean success;
 
 
@@ -160,12 +152,12 @@ public class LoginInteractorImpl implements LoginInteractor {
     public boolean updateUI(final String currentFirebaseUserID, final String email){
 
         success = true;
-        db = DatabaseManager.getInstance();
+        db = DatabaseManagerUser.getInstance();
 
         // Si l'utilisateur n'existe pas déja dans la database, on créer un nouvel utilisateur
         // avec son id dans la base de donnée
 
-        db.isUserExist(currentFirebaseUserID, new DatabaseManager.ResultBoolean<Boolean>() {
+        db.isUserExist(currentFirebaseUserID, new DatabaseManagerUser.ResultBoolean<Boolean>() {
             @Override
             public void onSuccess(Boolean bool) {
                 if(!bool){

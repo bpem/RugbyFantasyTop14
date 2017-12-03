@@ -26,6 +26,7 @@ public class PageChampionnatFragment extends Fragment implements PageChampionnat
                              Bundle savedInstanceState) {
         final View mView = inflater.inflate(R.layout.fragment_page_championnat, container, false);
 
+/*
         championnat = new Championnat(
                 getArguments().getString("EXTRA_CHAMPIONNAT_KEY"),
                 getArguments().getString("EXTRA_CHAMPIONNAT_NOM"),
@@ -33,6 +34,7 @@ public class PageChampionnatFragment extends Fragment implements PageChampionnat
                 getArguments().getBoolean("EXTRA_CHAMPIONNAT_PRIVE"),
                 getArguments().getInt("EXTRA_CHAMPIONNAT_NBMAX")
         );
+*/
 
         tvTitreChampionnat = (TextView) mView.findViewById(R.id.test_nom);
         tvTitreChampionnat.setText("Bienvenue dans le championnat " + championnat.getNomChamp());
