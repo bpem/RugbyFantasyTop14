@@ -15,10 +15,7 @@ import com.masquilierpemeja.rugbyfantasytop14.R;
 
 public class BottomNavigationActivity extends AppCompatActivity {
 
-    TextView tvTitreChampionnat;
     Championnat championnat;
-
-
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -35,6 +32,8 @@ public class BottomNavigationActivity extends AppCompatActivity {
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.container, pageChampionnatFragment, "FragmentName");
                     fragmentTransaction.commit();
+
+
 
 
                     return true;
@@ -64,19 +63,17 @@ public class BottomNavigationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bottom_navigation);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-        Intent intent = getIntent();
-
-        championnat = new Championnat(intent.getExtras().getString("EXTRA_CHAMPIONNAT_KEY"),
-                intent.getExtras().getString("EXTRA_CHAMPIONNAT_NOM"),
-                intent.getExtras().getString("EXTRA_CHAMPIONNAT_MDP"),
-                intent.getExtras().getBoolean("EXTRA_CHAMPIONNAT_PRIVE"),
-                intent.getExtras().getInt("EXTRA_CHAMPIONNAT_NBMAX")
-        );
+        setAffichage();
+    }
 
 
-       // tvTitreChampionnat = (TextView) findViewById(R.id.tv_titre_championnat);
-       // tvTitreChampionnat.setText("Bienvenue dans le championnat " + championnat.getNomChamp());
+    private void setAffichage(){
+        // ICI ON LANCE LE CODE DU FRAGMENT PAGE CHAMPIONNAT
+        setTitle("ACCUEIL");
+        PageChampionnatFragment pageChampionnatFragment = new PageChampionnatFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, pageChampionnatFragment, "FragmentName");
+        fragmentTransaction.commit();
     }
 
 }

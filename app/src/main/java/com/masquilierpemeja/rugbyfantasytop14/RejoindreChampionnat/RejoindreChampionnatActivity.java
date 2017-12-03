@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationActivity;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
 import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatFragment;
 import com.masquilierpemeja.rugbyfantasytop14.R;
@@ -66,13 +67,25 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
 
     @Override
     public void navigateToPageChampionnat(Championnat unChampionnat) {
-        Intent intent = new Intent(this, PageChampionnatFragment.class);
+        Intent intent = new Intent(this, BottomNavigationActivity.class);
        /** intent.putExtra("EXTRA_CHAMPIONNAT_NOM", unChampionnat.getNomChamp());
         intent.putExtra("EXTRA_CHAMPIONNAT_MDP", unChampionnat.getMdpChamp());
         intent.putExtra("EXTRA_CHAMPIONNAT_NBMAX", unChampionnat.getNbMaxChamp());
         intent.putExtra("EXTRA_CHAMPIONNAT_KEY", unChampionnat.getKeyChamp());
         intent.putExtra("EXTRA_CHAMPIONNAT_PRIVE", unChampionnat.getEstPrive()); **/
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("EXTRA_CHAMPIONNAT_NOM", unChampionnat.getNomChamp());
+        bundle.putString("EXTRA_CHAMPIONNAT_MDP", unChampionnat.getMdpChamp());
+        bundle.putInt("EXTRA_CHAMPIONNAT_NBMAX", unChampionnat.getNbMaxChamp());
+        bundle.putString("EXTRA_CHAMPIONNAT_KEY", unChampionnat.getKeyChamp());
+        bundle.putBoolean("EXTRA_CHAMPIONNAT_PRIVE", unChampionnat.getEstPrive());
+         // set Fragmentclass Arguments
+        PageChampionnatFragment fragment = new PageChampionnatFragment();
+        fragment.setArguments(bundle);
         startActivity(intent);
+
     }
 
     @Override
