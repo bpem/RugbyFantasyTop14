@@ -2,21 +2,41 @@ package com.masquilierpemeja.rugbyfantasytop14.Classement;
 
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationActivity;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerInformationClassement;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerUser;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.InformationClassement;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 import com.masquilierpemeja.rugbyfantasytop14.R;
+
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ClassementFragment extends Fragment {
+public class ClassementFragment extends Fragment implements ClassementView {
 
+    private DatabaseManagerInformationClassement dbInformationClassement;
+    private String IDcurrentFirebaseUser;
+    private ClassementPresenterImpl mClassementPresenterImpl;
+    private List<InformationClassement> listInformationClassementTriée;
 
     public ClassementFragment() {
-        // Required empty public constructor
+
+        mClassementPresenterImpl = new ClassementPresenterImpl(this);
+        getListInfosClassementTriée();
+
     }
 
 
@@ -27,4 +47,17 @@ public class ClassementFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_classement, container, false);
     }
 
+    @Override
+    public void getListInfosClassementTriée() {
+       mClassementPresenterImpl.getListInfosClassementTriée();
+
+    }
+
+    public void sendListInformationClassement(List<InformationClassement> listInformationClassement){
+
+
+        Toast.makeText(getContext(), "user ID ! !" +  listInformationClassement.get(0).getUser_ID(), Toast.LENGTH_SHORT).show();
+
+
+    }
 }
