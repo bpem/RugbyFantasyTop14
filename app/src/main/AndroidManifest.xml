@@ -14,7 +14,11 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Signup.SignupActivity" />
         <activity android:name=".Login.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".MotDePasseOublie.MotDePasseOublieActivity" />
         <activity android:name=".CreerChampionnat.CreerChampionnatActivity" />
@@ -25,11 +29,7 @@
             android:name=".BottomNavigation.BottomNavigationActivity"
             android:label="@string/title_activity_bottom_navigation">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
