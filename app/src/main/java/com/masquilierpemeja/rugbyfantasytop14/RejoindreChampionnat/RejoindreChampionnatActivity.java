@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
-import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatActivity;
+import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatFragment;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 
 import java.io.Serializable;
@@ -66,7 +66,7 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
 
     @Override
     public void navigateToPageChampionnat(Championnat unChampionnat) {
-        Intent intent = new Intent(this, PageChampionnatActivity.class);
+        Intent intent = new Intent(this, PageChampionnatFragment.class);
         intent.putExtra("EXTRA_CHAMPIONNAT_NOM", unChampionnat.getNomChamp());
         intent.putExtra("EXTRA_CHAMPIONNAT_MDP", unChampionnat.getMdpChamp());
         intent.putExtra("EXTRA_CHAMPIONNAT_NBMAX", unChampionnat.getNbMaxChamp());
