@@ -24,44 +24,56 @@ public class Championnat {
         this.nbMaxChamp = nbMaxChamp;
     }
 
+    /** public Championnat getChampionnatById(String keyChamp){
+        Championnat championnat = new Championnat();
+
+
+        return championnat;
+    } **/
+
     public String getKeyChamp() {
         return keyChamp;
     }
 
-    public void setKeyChamp(String keyChamp) {
+    public Championnat setKeyChamp(String keyChamp) {
         this.keyChamp = keyChamp;
+        return this;
     }
 
     public String getNomChamp() {
         return nomChamp;
     }
 
-    public void setNomChamp(String nomChamp) {
+    public Championnat setNomChamp(String nomChamp) {
         this.nomChamp = nomChamp;
+        return this;
     }
 
     public String getMdpChamp() {
         return mdpChamp;
     }
 
-    public void setMdpChamp(String mdpChamp) {
+    public Championnat setMdpChamp(String mdpChamp) {
         this.mdpChamp = mdpChamp;
+        return this;
     }
 
     public Boolean getEstPrive() {
         return estPrive;
     }
 
-    public void setEstPrive(Boolean estPrive) {
+    public Championnat setEstPrive(Boolean estPrive) {
         this.estPrive = estPrive;
+        return this;
     }
 
     public int getNbMaxChamp() {
         return nbMaxChamp;
     }
 
-    public void setNbMaxChamp(int nbMaxChamp) {
+    public Championnat setNbMaxChamp(int nbMaxChamp) {
         this.nbMaxChamp = nbMaxChamp;
+        return this;
     }
 
     @Override

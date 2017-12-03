@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,10 +13,7 @@ import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
-import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -30,14 +26,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
+import com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MotDePasseOublie.MotDePasseOublieActivity;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerUser;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerChampionnat;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.Signup.SignupActivity;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
@@ -50,6 +47,9 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private SignInButton googleButton;
    // private LoginButton facebookButton;
     private LoginPresenterImpl mLoginPresenter;
+    DatabaseManagerUser db;
+    DatabaseManagerChampionnat dbC;
+
 
 
     private CallbackManager callbackManager;
@@ -267,11 +267,40 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToMain() {
-
         Toast.makeText(getApplicationContext(), "onSuccess", Toast.LENGTH_LONG).show();
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        db = DatabaseManagerUser.getInstance();
+        dbC = DatabaseManagerChampionnat.getInstance();
+        db.getUserOnDatabse(user.getUid(), new DatabaseManagerUser.Result<User>() {
+            @Override
+            public void onSuccess(User user) {
+                if(user.getEstDansUnChampionnat() && user.getKeyChampionnat() != ""){
+
+                    // Appeler getChampionnat avec DatabaseManagerChampionnat
+                    dbC.getChampionnatOnDatabase(user.getKeyChampionnat(), new DatabaseManagerChampionnat.Result<Championnat>() {
+                        @Override
+                        public void onSuccess(Championnat championnat) {
+                            Intent intent = new Intent(LoginActivity.this, BottomNavigationActivity.class);
+                            intent.putExtra("EXTRA_CHAMPIONNAT_NOM", championnat.getNomChamp());
+                            intent.putExtra("EXTRA_CHAMPIONNAT_MDP", championnat.getMdpChamp());
+                            intent.putExtra("EXTRA_CHAMPIONNAT_NBMAX", championnat.getNbMaxChamp());
+                            intent.putExtra("EXTRA_CHAMPIONNAT_KEY", championnat.getKeyChamp());
+                            intent.putExtra("EXTRA_CHAMPIONNAT_PRIVE", championnat.getEstPrive());
+
+                            startActivity(intent);
+                        }
+                    });
+                }
+                else{
+                    Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
+                    startActivity(intent);
+
+                }
+            }
+        });
         Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
         startActivity(intent);
         finish();
-
     }
 }

@@ -11,8 +11,6 @@ import com.google.firebase.database.ValueEventListener;
 
 import com.google.android.gms.tasks.Task;
 
-import bolts.Bolts;
-
 
 /**
  * Created by Pierre on 02/12/2017.
@@ -23,7 +21,7 @@ import bolts.Bolts;
 //////////////////// FAIT LE LIEN ENTRE LA BDD FIREBASE ET NOS CLASSES  ////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-public class DatabaseManager {
+public class DatabaseManagerUser {
 
     //////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////VARIABLES DE CLASSES///////////////////////////////////////////
@@ -31,9 +29,9 @@ public class DatabaseManager {
 
     // NOM DU NOEUD USER DANS FIREBASE
     private final static String USERS = "users";
-    private Reference ref;
+        private Reference ref;
     private User user;
-    private static DatabaseManager INSTANCE = new DatabaseManager();
+    private static DatabaseManagerUser INSTANCE = new DatabaseManagerUser();
     private Boolean isUserExist;
 
 
@@ -42,7 +40,7 @@ public class DatabaseManager {
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    private DatabaseManager()
+    private DatabaseManagerUser()
     {
         ref = new Reference();
     }
@@ -55,7 +53,7 @@ public class DatabaseManager {
 
     public void getUserOnDatabse(final String uid, final Result<User> result)
     {
-        ref.users.child(uid).addListenerForSingleValueEvent(new ValueEventListener()
+            ref.users.child(uid).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
@@ -111,7 +109,7 @@ public class DatabaseManager {
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    public static DatabaseManager getInstance()
+    public static DatabaseManagerUser getInstance()
     {
         return INSTANCE;
     }

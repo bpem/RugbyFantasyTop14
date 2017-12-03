@@ -34,11 +34,7 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
                 case R.id.navigation_home:
                     // ICI ON LANCE LE CODE DU FRAGMENT PAGE CHAMPIONNAT
-                    setTitle("Accueil");
-                    PageChampionnatFragment pageChampionnatFragment = new PageChampionnatFragment();
-                    FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.container, pageChampionnatFragment, "Accueil");
-                    fragmentTransaction.commit();
+                    afficherHome();
 
 
                     return true;
@@ -89,18 +85,25 @@ public class BottomNavigationActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
-        Intent intent = getIntent();
-
-       /* championnat = new Championnat(intent.getExtras().getString("EXTRA_CHAMPIONNAT_KEY"),
-                intent.getExtras().getString("EXTRA_CHAMPIONNAT_NOM"),
-                intent.getExtras().getString("EXTRA_CHAMPIONNAT_MDP"),
-                intent.getExtras().getBoolean("EXTRA_CHAMPIONNAT_PRIVE"),
-                intent.getExtras().getInt("EXTRA_CHAMPIONNAT_NBMAX")
-        )*/;
-
-
-       // tvTitreChampionnat = (TextView) findViewById(R.id.tv_titre_championnat);
-       // tvTitreChampionnat.setText("Bienvenue dans le championnat " + championnat.getNomChamp());
+        afficherHome();
     }
 
+
+    private void afficherHome(){
+        Intent intent = getIntent();
+        Bundle bundle = new Bundle();
+        bundle.putString("EXTRA_CHAMPIONNAT_NOM", intent.getExtras().getString("EXTRA_CHAMPIONNAT_NOM"));
+        bundle.putString("EXTRA_CHAMPIONNAT_KEY", intent.getExtras().getString("EXTRA_CHAMPIONNAT_KEY"));
+        bundle.putString("EXTRA_CHAMPIONNAT_MDP", intent.getExtras().getString("EXTRA_CHAMPIONNAT_MDP"));
+        bundle.putBoolean("EXTRA_CHAMPIONNAT_PRIVE", intent.getExtras().getBoolean("EXTRA_CHAMPIONNAT_PRIVE"));
+        bundle.putInt("EXTRA_CHAMPIONNAT_NBMAX", intent.getExtras().getInt("EXTRA_CHAMPIONNAT_NBMAX"));
+
+        PageChampionnatFragment fragment = new PageChampionnatFragment();
+        fragment.setArguments(bundle);
+
+        setTitle("Accueil");
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.container, fragment, "Accueil");
+        fragmentTransaction.commit();
+    }
 }
