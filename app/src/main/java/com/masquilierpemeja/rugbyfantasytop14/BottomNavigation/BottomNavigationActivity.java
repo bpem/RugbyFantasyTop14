@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.masquilierpemeja.rugbyfantasytop14.Calendrier.CalendrierFragment;
+import com.masquilierpemeja.rugbyfantasytop14.Classement.ClassementFragment;
+import com.masquilierpemeja.rugbyfantasytop14.MonEquipe.MonEquipeFragment;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
 import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatFragment;
 import com.masquilierpemeja.rugbyfantasytop14.R;
@@ -27,32 +30,53 @@ public class BottomNavigationActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
 
+
+                case R.id.navigation_home:
                     // ICI ON LANCE LE CODE DU FRAGMENT PAGE CHAMPIONNAT
-                    setTitle("ACCUEIL");
+                    setTitle("Accueil");
                     PageChampionnatFragment pageChampionnatFragment = new PageChampionnatFragment();
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.container, pageChampionnatFragment, "FragmentName");
+                    fragmentTransaction.replace(R.id.container, pageChampionnatFragment, "Accueil");
                     fragmentTransaction.commit();
 
 
                     return true;
-                case R.id.navigation_dashboard:
-
+                case R.id.navigation_mon_equipe:
                     // ICI ON LANCE LE CODE DU FRAGMENT PAGE MON EQUIPE
+                    setTitle("Mon equipe");
+                    MonEquipeFragment monEquipeFragment = new MonEquipeFragment();
+                    FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.container, monEquipeFragment, "Mon equipe");
+                    fragmentTransaction2.commit();
 
                     return true;
-                case R.id.navigation_notifications:
-
-                    // ICI ON LANCE LE CODE DU FRAGMENT PAGE CALENDRIER
-
-                    return true;
 
 
-
+                case R.id.navigation_classement:
 
                     // ICI ON LANCE LE CODE DU FRAGMENT PAGE CLASSEMENT
+                    setTitle("Classement");
+                    ClassementFragment classementFragment = new ClassementFragment();
+                    FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction3.replace(R.id.container, classementFragment, "Classement");
+                    fragmentTransaction3.commit();
+
+                    return true;
+
+
+                case R.id.navigation_calendrier:
+
+                    // ICI ON LANCE LE CODE DU FRAGMENT PAGE CALENDRIER
+                    setTitle("Calendrier");
+                    CalendrierFragment calendrierFragment = new CalendrierFragment();
+                    FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction4.replace(R.id.container, calendrierFragment, "Calendrier");
+                    fragmentTransaction4.commit();
+
+
+                    return true;
+
             }
             return false;
         }
@@ -67,12 +91,12 @@ public class BottomNavigationActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        championnat = new Championnat(intent.getExtras().getString("EXTRA_CHAMPIONNAT_KEY"),
+       /* championnat = new Championnat(intent.getExtras().getString("EXTRA_CHAMPIONNAT_KEY"),
                 intent.getExtras().getString("EXTRA_CHAMPIONNAT_NOM"),
                 intent.getExtras().getString("EXTRA_CHAMPIONNAT_MDP"),
                 intent.getExtras().getBoolean("EXTRA_CHAMPIONNAT_PRIVE"),
                 intent.getExtras().getInt("EXTRA_CHAMPIONNAT_NBMAX")
-        );
+        )*/;
 
 
        // tvTitreChampionnat = (TextView) findViewById(R.id.tv_titre_championnat);
