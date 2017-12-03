@@ -1,6 +1,7 @@
 package com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
+import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 
 import java.io.Serializable;
@@ -64,9 +66,13 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
 
     @Override
     public void navigateToPageChampionnat(Championnat unChampionnat) {
-
-
-
+        Intent intent = new Intent(this, PageChampionnatActivity.class);
+        intent.putExtra("EXTRA_CHAMPIONNAT_NOM", unChampionnat.getNomChamp());
+        intent.putExtra("EXTRA_CHAMPIONNAT_MDP", unChampionnat.getMdpChamp());
+        intent.putExtra("EXTRA_CHAMPIONNAT_NBMAX", unChampionnat.getNbMaxChamp());
+        intent.putExtra("EXTRA_CHAMPIONNAT_KEY", unChampionnat.getKeyChamp());
+        intent.putExtra("EXTRA_CHAMPIONNAT_PRIVE", unChampionnat.getEstPrive());
+        startActivity(intent);
     }
 
     @Override
@@ -76,7 +82,7 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
 
     public void dialog(final Championnat unChampionnat){
 
-        View mView = getLayoutInflater().inflate(R.layout.dialog_rejoindre_championnat_prive,null);
+        final View mView = getLayoutInflater().inflate(R.layout.dialog_rejoindre_championnat_prive,null);
         etMdpChampionnat = (EditText) mView.findViewById(R.id.et_mdp_championnat);
         if(unChampionnat.getEstPrive()){
             new AlertDialog.Builder(this)
@@ -88,6 +94,7 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if(etMdpChampionnat.getText().toString().equals(unChampionnat.getMdpChamp().toString())){
+                                mRejoindreChampionnatPresenter.rejoindreChampionnat(unChampionnat.getKeyChamp());
                                 navigateToPageChampionnat(unChampionnat);
                                 Toast.makeText(getApplicationContext(), "Vous avez rejoint le championnat " + unChampionnat.getNomChamp(), Toast.LENGTH_SHORT).show();
                             }
@@ -106,6 +113,7 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
                     .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            mRejoindreChampionnatPresenter.rejoindreChampionnat(unChampionnat.getKeyChamp());
                             navigateToPageChampionnat(unChampionnat);
                             Toast.makeText(getApplicationContext(), "Vous avez rejoint le championnat" + unChampionnat.getNomChamp(), Toast.LENGTH_SHORT).show();
                         }

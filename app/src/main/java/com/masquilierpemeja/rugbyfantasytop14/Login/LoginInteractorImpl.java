@@ -168,25 +168,25 @@ public class LoginInteractorImpl implements LoginInteractor {
         db.isUserExist(currentFirebaseUserID, new DatabaseManager.ResultBoolean<Boolean>() {
             @Override
             public void onSuccess(Boolean bool) {
-
-                db.setUserOnDatabase(new User(email, currentFirebaseUserID))
-                        .addOnSuccessListener
-                                (new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        Log.i("addUserOnDatabse", "SUCCESS");
-                                        success = true;
-                                    }
-                                })
-                        .addOnFailureListener
-                                (new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Log.i("addUserOnDatabse", "FAILURE");
-                                        success = false;
-                                    }
-                                });
-
+                if(!bool){
+                    db.setUserOnDatabase(new User(email, currentFirebaseUserID, false, "" ))
+                            .addOnSuccessListener
+                                    (new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.i("addUserOnDatabse", "SUCCESS");
+                                            success = true;
+                                        }
+                                    })
+                            .addOnFailureListener
+                                    (new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Log.i("addUserOnDatabse", "FAILURE");
+                                            success = false;
+                                        }
+                                    });
+                }
             }
         });
 

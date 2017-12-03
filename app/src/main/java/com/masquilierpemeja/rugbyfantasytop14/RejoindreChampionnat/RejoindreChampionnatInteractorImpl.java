@@ -1,14 +1,19 @@
 package com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat;
 
+import android.provider.ContactsContract;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManager;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.ArrayList;
 
@@ -22,10 +27,22 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
     DatabaseReference myRef;
     Championnat unChampionnat;
     ArrayList<Championnat> desChampionnats = new ArrayList<>();
+    DatabaseManager db;
+    FirebaseAuth auth;
 
     @Override
-    public void rejoindreChampionnat(String keyChampionnat) {
-
+    public void rejoindreChampionnat(final String keyChampionnat) {
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+        db = DatabaseManager.getInstance();
+        db.getUserOnDatabse(user.getUid(), new DatabaseManager.Result<User>() {
+            @Override
+            public void onSuccess(User user) {
+                user.setEstDansUnChampionnat(true);
+                user.setKeyChampionnat(keyChampionnat);
+                db.setUserOnDatabase(user);
+            }
+        });
     }
 
     @Override
