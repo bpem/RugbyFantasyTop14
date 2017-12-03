@@ -18,6 +18,8 @@ public class User {
 
     private String adresseMail;
     private String userID;
+    private Boolean estDansUnChampionnat;
+    private String keyChampionnat;
 
     /////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////CONSTRUCTEURS//////////////////////////////////////////////////
@@ -30,9 +32,11 @@ public class User {
 
 
     // Constructeur avec paramètres
-    public User(String adresseMail, String userID){
+    public User(String adresseMail, String userID, Boolean estDansUnChampionnat,String keyChampionnat){
         this.adresseMail = adresseMail;
         this.userID = userID;
+        this.estDansUnChampionnat = estDansUnChampionnat;
+        this.keyChampionnat = keyChampionnat;
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -58,6 +62,22 @@ public class User {
         return this;
     }
 
+
+    public Boolean getEstDansUnChampionnat() {
+        return estDansUnChampionnat;
+    }
+
+    public void setEstDansUnChampionnat(Boolean estDansUnChampionnat) {
+        this.estDansUnChampionnat = estDansUnChampionnat;
+    }
+
+    public String getKeyChampionnat() {
+        return keyChampionnat;
+    }
+
+    public void setKeyChampionnat(String keyChampionnat) {
+        this.keyChampionnat = keyChampionnat;
+    }
 
 
 }

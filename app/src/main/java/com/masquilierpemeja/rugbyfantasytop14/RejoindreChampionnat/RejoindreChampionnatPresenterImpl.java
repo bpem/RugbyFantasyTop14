@@ -24,6 +24,10 @@ public class RejoindreChampionnatPresenterImpl implements RejoindreChampionnatPr
 
     @Override
     public void rejoindreChampionnat(String keyChampionnat) {
+        if (mRejoindreChampionnatView != null) {
+            mRejoindreChampionnatView.showProgress();
+            mRejoindreChampionnatInteractor.rejoindreChampionnat(keyChampionnat);
+        }
 
     }
 
@@ -33,7 +37,6 @@ public class RejoindreChampionnatPresenterImpl implements RejoindreChampionnatPr
             mRejoindreChampionnatView.showProgress();
             mRejoindreChampionnatInteractor.listerChampionnat(uneListe, adapter, champArray);
         }
-
     }
 
     @Override

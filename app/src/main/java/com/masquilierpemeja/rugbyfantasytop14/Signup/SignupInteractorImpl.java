@@ -87,7 +87,7 @@ public class SignupInteractorImpl implements SignupInteractor {
         db = DatabaseManager.getInstance();
         FirebaseUser currentFirebaseUser = globalAuth.getCurrentUser() ;
         String currentFirebaseUserID = currentFirebaseUser.getUid();
-        db.setUserOnDatabase(new User(email, currentFirebaseUserID))
+        db.setUserOnDatabase(new User(email, currentFirebaseUserID, false,""))
                 .addOnSuccessListener
                         (new OnSuccessListener<Void>() {
                             @Override

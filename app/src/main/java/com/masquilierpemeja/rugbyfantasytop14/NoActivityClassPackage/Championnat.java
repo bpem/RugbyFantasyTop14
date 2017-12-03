@@ -12,6 +12,10 @@ public class Championnat {
     private Boolean estPrive;
     private int nbMaxChamp;
 
+    public Championnat(){
+
+    }
+
     public Championnat(String keyChamp, String nomChamp, String mdpChamp, Boolean estPrive, int nbMaxChamp) {
         this.keyChamp = keyChamp;
         this.nomChamp = nomChamp;
