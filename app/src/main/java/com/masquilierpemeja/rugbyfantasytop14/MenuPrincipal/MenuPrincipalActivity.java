@@ -5,9 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import com.google.firebase.auth.FirebaseAuth;
+import com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationActivity;
 import com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalPresenterImpl;
@@ -29,10 +33,8 @@ public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrin
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
-        btnGoToMonProfil = (Button) findViewById(R.id.btn_go_to_mon_profil);
         btnGoToCreerChampionnat = (Button) findViewById(R.id.btn_go_to_creer_championnat);
         btnGoToRejoindreChampionnat = (Button) findViewById(R.id.btn_go_to_rejoindre_championnat);
-        btnDeconnexion = (Button) findViewById(R.id.btn_deconnexion);
 
         btnGoToCreerChampionnat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,5 +111,32 @@ public class MenuPrincipalActivity extends AppCompatActivity implements MenuPrin
     @Override
     public void logout(String message) {
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_trois_petits_points, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.profil:
+                Intent intent = new Intent(MenuPrincipalActivity.this, ProfilActivity.class);
+                startActivity(intent);
+
+                return true;
+            case R.id.deconnexion:
+                FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                mFirebaseAuth.signOut();
+                startActivity(new Intent(MenuPrincipalActivity.this, LoginActivity.class));
+                finish();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

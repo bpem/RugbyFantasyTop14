@@ -14,5 +14,6 @@ public interface RejoindreChampionnatView {
     void navigateToMain();
     void showAlert(String message);
     void navigateToPageChampionnat(Championnat unChampionnat);
+    void navigateToCreerChampionnat();
 
 }

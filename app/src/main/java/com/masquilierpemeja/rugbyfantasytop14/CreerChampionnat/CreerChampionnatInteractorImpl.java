@@ -23,7 +23,12 @@ public class CreerChampionnatInteractorImpl implements CreerChampionnatInteracto
             String idChampionnat = myRef.push().getKey();
             myRef.child(idChampionnat).child("nom").setValue(nomChampionnat);
             myRef.child(idChampionnat).child("prive").setValue(estPublic);
-            myRef.child(idChampionnat).child("nombreMax").setValue(nombreDeParticipant);
+            if(nombreDeParticipant == null){
+                myRef.child(idChampionnat).child("nombreMax").setValue(14);
+            }
+            else {
+                myRef.child(idChampionnat).child("nombreMax").setValue(nombreDeParticipant);
+            }
             myRef.child(idChampionnat).child("motDePasse").setValue(motDePasse);
             listener.onSuccess();
         }

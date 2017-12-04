@@ -86,7 +86,8 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
                         dataSnapshot.child("nom").getValue(String.class),
                         dataSnapshot.child("motDePasse").getValue(String.class),
                         dataSnapshot.child("prive").getValue(Boolean.class),
-                        dataSnapshot.child("nombreMax").getValue(Integer.class));
+                        dataSnapshot.child("nombreMax").getValue(Integer.class) != null ?  dataSnapshot.child("nombreMax").getValue(Integer.class) : 14
+                );
 
                 champArray.add(unChampionnat);
 
