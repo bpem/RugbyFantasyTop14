@@ -265,6 +265,7 @@ public class MonEquipeFragment extends Fragment implements MonEquipeView{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 boutonCourant.setText(desJoueurs.get(position).toString());
+                boutonCourant.setTextSize(12);
             }
         });
 
