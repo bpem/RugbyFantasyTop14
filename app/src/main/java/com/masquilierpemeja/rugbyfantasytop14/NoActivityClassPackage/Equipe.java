@@ -42,4 +42,5 @@ public class Equipe {
     public void setListJoueur(List<Joueur> listJoueur) {
         this.listJoueur = listJoueur;
     }
+
 }

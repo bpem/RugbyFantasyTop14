@@ -66,4 +66,9 @@ public class Joueur {
     public void setNationalite(String nationalite) {
         this.nationalite = nationalite;
     }
+
+    @Override
+    public String toString(){
+        return this.getNom() + " " + this.getPrenom();
+    }
 }
