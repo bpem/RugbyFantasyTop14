@@ -41,10 +41,6 @@ public class User {
         this.estDansUnChampionnat = estDansUnChampionnat;
         this.keyChampionnat = keyChampionnat;
 
-        Random r = new Random();
-        int valeur = 1 + r.nextInt(100 - 1);
-        this.nom = "Player" + valeur;
-
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
