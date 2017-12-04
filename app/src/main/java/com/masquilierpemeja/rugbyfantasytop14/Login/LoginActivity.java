@@ -272,7 +272,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         FirebaseUser user = auth.getCurrentUser();
         db = DatabaseManagerUser.getInstance();
         dbC = DatabaseManagerChampionnat.getInstance();
-        db.getUserOnDatabse(user.getUid(), new DatabaseManagerUser.Result<User>() {
+        db.getUserOnDatabase(user.getUid(), new DatabaseManagerUser.Result<User>() {
             @Override
             public void onSuccess(User user) {
                 if(user.getEstDansUnChampionnat() && user.getKeyChampionnat() != ""){

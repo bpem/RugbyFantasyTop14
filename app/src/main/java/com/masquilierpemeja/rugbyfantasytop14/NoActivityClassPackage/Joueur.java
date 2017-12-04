@@ -5,18 +5,27 @@ package com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage;
  */
 
 public class Joueur {
-    String nomJoueur, prenomJoueur, keyEquipe, posteJoueur, nationaliteJoueur;
+    String keyJoueur, nomJoueur, prenomJoueur, keyEquipe, posteJoueur, nationaliteJoueur;
     int ageJoueur;
 
     public Joueur(){}
 
-    public Joueur(String nomJoueur, String prenomJoueur, String keyEquipe, String posteJoueur, String nationaliteJoueur, int ageJoueur) {
+    public Joueur(String keyJoueur, String nomJoueur, String prenomJoueur, String keyEquipe, String posteJoueur, String nationaliteJoueur, int ageJoueur) {
+        this.keyJoueur = keyJoueur;
         this.nomJoueur = nomJoueur;
         this.prenomJoueur = prenomJoueur;
         this.keyEquipe = keyEquipe;
         this.posteJoueur = posteJoueur;
         this.nationaliteJoueur = nationaliteJoueur;
         this.ageJoueur = ageJoueur;
+    }
+
+    public String getKeyJoueur() {
+        return keyJoueur;
+    }
+
+    public void setKeyJoueur(String keyJoueur) {
+        this.keyJoueur = keyJoueur;
     }
 
     public String getNomJoueur() {
