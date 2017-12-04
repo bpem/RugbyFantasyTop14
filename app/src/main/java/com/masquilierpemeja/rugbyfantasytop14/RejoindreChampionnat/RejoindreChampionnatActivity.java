@@ -8,11 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationActivity;
+import com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat.CreerChampionnatActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
 import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatFragment;
 import com.masquilierpemeja.rugbyfantasytop14.R;
@@ -27,11 +30,13 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
     private ArrayAdapter<Championnat> adapter;
     private RejoindreChampionnatPresenter mRejoindreChampionnatPresenter;
     EditText etMdpChampionnat;
+    Button goToCreerChampionnat;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rejoindre_championnat);
         lvChampionnats = (ListView) findViewById(R.id.lv_championnats);
+        goToCreerChampionnat = (Button) findViewById(R.id.btn_creer_championnat);
         mRejoindreChampionnatPresenter = new RejoindreChampionnatPresenterImpl(this);
         adapter = new ArrayAdapter<Championnat>(this, android.R.layout.simple_dropdown_item_1line, desChampionnats);
         mRejoindreChampionnatPresenter.listerChampionnat(lvChampionnats, adapter, desChampionnats);
@@ -41,6 +46,13 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                     dialog(desChampionnats.get(position));
+            }
+        });
+
+        goToCreerChampionnat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navigateToCreerChampionnat();
             }
         });
     }
@@ -75,6 +87,11 @@ public class RejoindreChampionnatActivity extends AppCompatActivity implements R
         intent.putExtra("EXTRA_CHAMPIONNAT_PRIVE", unChampionnat.getEstPrive());
 
         startActivity(intent);
+    }
+
+    @Override
+    public void navigateToCreerChampionnat() {
+            startActivity(new Intent(RejoindreChampionnatActivity.this, CreerChampionnatActivity.class));
     }
 
     @Override

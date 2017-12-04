@@ -36,6 +36,7 @@ import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseMan
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerChampionnat;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 import com.masquilierpemeja.rugbyfantasytop14.R;
+import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.Signup.SignupActivity;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
@@ -303,7 +304,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                     });
                 }
                 else{
-                    Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, RejoindreChampionnatActivity.class);
                     startActivity(intent);
                 }
             }

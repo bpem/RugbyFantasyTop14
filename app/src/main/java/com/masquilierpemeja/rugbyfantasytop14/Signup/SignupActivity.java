@@ -16,6 +16,7 @@ import com.masquilierpemeja.rugbyfantasytop14.Login.LoginView;
 import com.masquilierpemeja.rugbyfantasytop14.MainActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
+import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 
 public class SignupActivity extends AppCompatActivity implements SignupView {
 
@@ -83,7 +84,7 @@ public class SignupActivity extends AppCompatActivity implements SignupView {
     @Override
     public void signupIsSuccessful(String message) {
         Toast.makeText(SignupActivity.this , message, Toast.LENGTH_LONG).show();
-        startActivity(new Intent(SignupActivity.this, MenuPrincipalActivity.class));
+        startActivity(new Intent(SignupActivity.this, RejoindreChampionnatActivity.class));
         finish();
     }
 

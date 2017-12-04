@@ -62,6 +62,7 @@ public class CreerChampionnatActivity extends AppCompatActivity implements Creer
             @Override
             public void onClick(View v) {
                 mCreerChampionnatPresenter.creerChampionnat(edNomChampionnat.getText().toString().trim(), swEstPublic.isChecked(), (Integer) spNombreDeJoueur.getSelectedItem(), edMotDePasse.getText().toString().trim());
+                navigateToRejoindreChampionnat();
             }
         });
     }
@@ -103,7 +104,7 @@ public class CreerChampionnatActivity extends AppCompatActivity implements Creer
 
     @Override
     public void navigateToMenuPrincipal() {
-        startActivity(new Intent(CreerChampionnatActivity.this, MenuPrincipalActivity.class));
+        startActivity(new Intent(CreerChampionnatActivity.this, RejoindreChampionnatActivity.class));
     }
 
     @Override
