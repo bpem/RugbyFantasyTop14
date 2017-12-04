@@ -2,21 +2,30 @@ package com.masquilierpemeja.rugbyfantasytop14.BottomNavigation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.masquilierpemeja.rugbyfantasytop14.Calendrier.CalendrierFragment;
 import com.masquilierpemeja.rugbyfantasytop14.Classement.ClassementFragment;
+import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
+import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MonEquipe.MonEquipeFragment;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
 import com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatFragment;
+import com.masquilierpemeja.rugbyfantasytop14.Profil.ProfilActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 
-public class BottomNavigationActivity extends AppCompatActivity {
+import java.util.UUID;
+
+public class BottomNavigationActivity extends AppCompatActivity implements com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationView{
 
     TextView tvTitreChampionnat;
     Championnat championnat;
@@ -106,4 +115,34 @@ public class BottomNavigationActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.container, fragment, "Accueil");
         fragmentTransaction.commit();
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_trois_petits_points, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.profil:
+
+                Intent intent = new Intent(BottomNavigationActivity.this, ProfilActivity.class);
+                startActivity(intent);
+
+                return true;
+            case R.id.deconnexion:
+                FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                mFirebaseAuth.signOut();
+                startActivity(new Intent(BottomNavigationActivity.this, LoginActivity.class));
+                finish();
+
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }
