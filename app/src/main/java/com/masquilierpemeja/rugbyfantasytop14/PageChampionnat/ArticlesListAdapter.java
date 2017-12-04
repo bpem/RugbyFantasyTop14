@@ -53,4 +53,6 @@ public class ArticlesListAdapter extends ArrayAdapter<Article> {
         return  convertView;
     }
 
+
+
 }

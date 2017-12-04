@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -59,7 +60,29 @@ public class PageChampionnatFragment extends Fragment implements PageChampionnat
         adapter();
 
 
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent browserIntent;
+
+                switch (position){
+                    case 0:
+                        browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lemonde.fr/top-14/article/2017/12/03/top-14-le-stade-francais-s-impose-face-au-racing-lors-du-derby-francilien_5224032_1616942.html"));
+                        startActivity(browserIntent);
+                    case 1:
+                         browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lemonde.fr/top-14/article/2017/12/02/top-14-la-rochelle-prend-la-premiere-place-en-battant-montpellier_5223774_1616942.html"));
+                        startActivity(browserIntent);
+                    case 2:
+                         browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.lemonde.fr/top-14/article/2017/11/26/top-14-le-racing-fait-tomber-le-leader-montpellierain_5220686_1616942.html"));
+                        startActivity(browserIntent);
+
+
+                }
+
+
+            }
+        });
 
         // Inflate the layout for this fragment
         return mView;
