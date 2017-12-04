@@ -75,7 +75,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
             public void onDataChange(DataSnapshot dataSnapshot)
 
             {
-                List<InformationClassement> listInformationClassement = new ArrayList<InformationClassement>() ;
+                ArrayList<InformationClassement> listInformationClassement = new ArrayList<InformationClassement>() ;
 
                 for (DataSnapshot dt : dataSnapshot.getChildren()){
 
@@ -100,7 +100,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
     }
 
     @Override
-    public void trierInformationClassement(List<InformationClassement> listInformationClassement) {
+    public void trierInformationClassement(ArrayList<InformationClassement> listInformationClassement) {
 
 
         Boolean tab_en_ordre = false;
@@ -111,7 +111,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
             tab_en_ordre = true;
             for(int i=0 ; i < taille-1 ; i++)
             {
-                if(listInformationClassement.get(i).getPtsTotal() > listInformationClassement.get(i+1).getPtsTotal())
+                if(listInformationClassement.get(i).getPtsTotal() < listInformationClassement.get(i+1).getPtsTotal())
                 {
                     Collections.swap(listInformationClassement, i, i+1);
 

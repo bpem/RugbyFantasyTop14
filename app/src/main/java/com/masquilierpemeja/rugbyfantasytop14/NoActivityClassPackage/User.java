@@ -1,5 +1,7 @@
 package com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage;
 
+import java.util.Random;
+
 /**
  * Created by Pierre on 02/12/2017.
  */
@@ -20,6 +22,7 @@ public class User {
     private String userID;
     private Boolean estDansUnChampionnat;
     private String keyChampionnat;
+    private String nom;
 
     /////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////CONSTRUCTEURS//////////////////////////////////////////////////
@@ -37,6 +40,11 @@ public class User {
         this.userID = userID;
         this.estDansUnChampionnat = estDansUnChampionnat;
         this.keyChampionnat = keyChampionnat;
+
+        Random r = new Random();
+        int valeur = 1 + r.nextInt(100 - 1);
+        this.nom = "Player" + valeur;
+
     }
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -77,6 +85,14 @@ public class User {
 
     public void setKeyChampionnat(String keyChampionnat) {
         this.keyChampionnat = keyChampionnat;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
 
