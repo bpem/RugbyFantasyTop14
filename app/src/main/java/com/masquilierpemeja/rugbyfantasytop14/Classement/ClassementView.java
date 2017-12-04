@@ -11,7 +11,7 @@ import java.util.List;
 public interface ClassementView {
 
     void getListInfosClassementTriée();
-     void sendListInformationClassement(List<InformationClassement> listInformationClassement);
+     void sendListInformationClassementTriee(List<InformationClassement> listInformationClassement);
 
 
 

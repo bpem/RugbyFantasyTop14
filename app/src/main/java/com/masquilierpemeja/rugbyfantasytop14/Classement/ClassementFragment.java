@@ -30,13 +30,11 @@ public class ClassementFragment extends Fragment implements ClassementView {
     private DatabaseManagerInformationClassement dbInformationClassement;
     private String IDcurrentFirebaseUser;
     private ClassementPresenterImpl mClassementPresenterImpl;
-    private List<InformationClassement> listInformationClassementTriée;
+    List<InformationClassement> sendListInformationClassementTriee;
 
     public ClassementFragment() {
-
         mClassementPresenterImpl = new ClassementPresenterImpl(this);
         getListInfosClassementTriée();
-
     }
 
 
@@ -49,15 +47,11 @@ public class ClassementFragment extends Fragment implements ClassementView {
 
     @Override
     public void getListInfosClassementTriée() {
-       mClassementPresenterImpl.getListInfosClassementTriée();
+       mClassementPresenterImpl.getListInfosClassement();
 
     }
 
-    public void sendListInformationClassement(List<InformationClassement> listInformationClassement){
-
-
-        Toast.makeText(getContext(), "user ID ! !" +  listInformationClassement.get(0).getUser_ID(), Toast.LENGTH_SHORT).show();
-
-
+    public void sendListInformationClassementTriee(List<InformationClassement> sendListInformationClassementTriee){
+        this.sendListInformationClassementTriee = sendListInformationClassementTriee;
     }
 }

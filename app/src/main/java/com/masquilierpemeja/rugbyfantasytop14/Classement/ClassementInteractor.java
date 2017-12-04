@@ -17,11 +17,12 @@ public interface ClassementInteractor {
 
     }
 
-    void getListInfosClassementTriée();
+
     String getKeyOfUser();
     User getUser(String FirebaseUserID);
     void getListOfInformationClassement(String keyOfUser);
-    void getListInfosClassement();
+    void getListInfosClassementTriee();
+    void trierInformationClassement(List<InformationClassement> listInformationClassement);
 
 
 

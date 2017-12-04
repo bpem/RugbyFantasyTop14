@@ -19,15 +19,15 @@ public class ClassementPresenterImpl implements  ClassementPresenter, Classement
     }
 
 
-    public void  getListInfosClassementTriée(){
+    public void  getListInfosClassement(){
 
-       mClassementInterractorImpl.getListInfosClassementTriée();
+       mClassementInterractorImpl.getListInfosClassementTriee();
 
     }
 
   public void sendListInformationClassement(List<InformationClassement> listInformationClassement){
 
-        mClassementView.sendListInformationClassement(listInformationClassement);
+        mClassementView.sendListInformationClassementTriee(listInformationClassement);
 
     }
 

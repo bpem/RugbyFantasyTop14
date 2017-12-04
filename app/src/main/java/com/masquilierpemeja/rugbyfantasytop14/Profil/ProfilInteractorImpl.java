@@ -28,7 +28,7 @@ public class ProfilInteractorImpl implements ProfilInteractor {
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         db = DatabaseManagerUser.getInstance();
-        db.getUserOnDatabse(user.getUid(), new DatabaseManagerUser.Result<User>() {
+        db.getUserOnDatabase(user.getUid(), new DatabaseManagerUser.Result<User>() {
             @Override
             public void onSuccess(User user) {
                 mProfilPresenterImpl.sendUser(user);
