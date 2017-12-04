@@ -36,7 +36,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
     }
 
     public void getListInfosClassementTriee(){
-       getListOfInformationClassement(getKeyOfUser());
+      getUser(getKeyOfUser());
     }
 
     @Override
@@ -49,25 +49,22 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
     }
 
     @Override
-    public User getUser(String firebaseUSerID) {
+    public void getUser(String firebaseUSerID) {
 
         dbUser = DatabaseManagerUser.getInstance();
         dbUser.getUserOnDatabase(firebaseUSerID, new DatabaseManagerUser.Result<User>() {
             @Override
             public void onSuccess(User user) {
-                ClassementInteractorImpl.this.user = user;
+                getListOfInformationClassement(user);
             }
         });
 
-        //SUREMENT Y AVOIR UNE ERREURE ICI
-        return user;
 
     }
 
     @Override
-    public void getListOfInformationClassement(String keyOfUser) {
+    public void getListOfInformationClassement(final User user) {
 
-        uid = keyOfUser;
 
         FirebaseDatabase.getInstance().getReference().child("Informations classement").addListenerForSingleValueEvent(new ValueEventListener()
         {
@@ -80,7 +77,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
                 for (DataSnapshot dt : dataSnapshot.getChildren()){
 
                     InformationClassement informationClassement = dt.getValue(InformationClassement.class);
-                    if (informationClassement.getUser_ID().equals(uid) ){
+                    if (informationClassement.getKeyChampionnat().equals(user.getKeyChampionnat()) ){
                         listInformationClassement.add(informationClassement);
                     }
                 }

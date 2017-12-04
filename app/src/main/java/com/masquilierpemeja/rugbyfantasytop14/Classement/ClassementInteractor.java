@@ -20,8 +20,8 @@ public interface ClassementInteractor {
 
 
     String getKeyOfUser();
-    User getUser(String FirebaseUserID);
-    void getListOfInformationClassement(String keyOfUser);
+    void getUser(String FirebaseUserID);
+    void getListOfInformationClassement(User user);
     void getListInfosClassementTriee();
     void trierInformationClassement(ArrayList<InformationClassement> listInformationClassement);
 
