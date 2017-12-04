@@ -80,7 +80,6 @@ public class MonEquipeInteractorImpl implements MonEquipeInteractor {
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-
                 Iterator<DataSnapshot> dataSnapshotsChat = dataSnapshot.child("listeJoueur").getChildren().iterator();
 
                 while (dataSnapshotsChat.hasNext()) {
