@@ -1,5 +1,6 @@
 package com.masquilierpemeja.rugbyfantasytop14.MonEquipe;
 
+import android.provider.ContactsContract;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -17,6 +18,7 @@ import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Joueur;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -26,12 +28,16 @@ import java.util.List;
 public class MonEquipeInteractorImpl implements MonEquipeInteractor {
 
     DatabaseReference myRef;
+    DatabaseReference myRef2;
+    DatabaseReference myRef3;
     DatabaseManagerEquipe dbE;
     DatabaseManagerUser dbU;
     DatabaseManagerJoueur dbJ;
     FirebaseAuth auth;
     MonEquipePresenterImpl mMonEquipePresenterImpl;
     Joueur unJoueur;
+    ArrayList<Joueur> desJoueurs;
+    String a,b,c;
 
 
     public MonEquipeInteractorImpl(MonEquipePresenterImpl mMonEquipePresenterImpl){
@@ -74,17 +80,24 @@ public class MonEquipeInteractorImpl implements MonEquipeInteractor {
         myRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                unJoueur = new Joueur(dataSnapshot.child("listeJoueur").getKey(),
-                        dataSnapshot.child("listeJoueur").child("nom").getValue(String.class),
-                        dataSnapshot.child("listeJoueur").child("prenom").getValue(String.class),
-                        dataSnapshot.child("listeJoueur").child("keyEquipe").getValue(String.class),
-                        dataSnapshot.child("listeJoueur").child("poste").getValue(String.class),
-                        dataSnapshot.child("listeJoueur").child("nationalite").getValue(String.class)
-                        );
 
-                //if(unJoueur.getPoste().equals(poste)){
-                    joueurArray.add(unJoueur);
-                //}
+                Iterator<DataSnapshot> dataSnapshotsChat = dataSnapshot.child("listeJoueur").getChildren().iterator();
+
+                while (dataSnapshotsChat.hasNext()) {
+                    DataSnapshot dataSnapshotChild = dataSnapshotsChat.next();
+
+                    unJoueur = new Joueur(dataSnapshotChild.getKey(),
+                            dataSnapshotChild.child("nom").getValue(String.class),
+                            dataSnapshotChild.child("prenom").getValue(String.class),
+                            dataSnapshotChild.child("keyEquipe").getValue(String.class),
+                            dataSnapshotChild.child("poste").getValue(String.class),
+                            dataSnapshotChild.child("nationalite").getValue(String.class)
+                    );
+                    if(unJoueur.getPoste().equals(poste)){
+                        joueurArray.add(unJoueur);
+                    }
+
+                }
                 adapter.notifyDataSetChanged();
             }
 

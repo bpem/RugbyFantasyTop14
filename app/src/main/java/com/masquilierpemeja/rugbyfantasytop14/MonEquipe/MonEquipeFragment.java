@@ -60,15 +60,10 @@ public class MonEquipeFragment extends Fragment implements MonEquipeView{
             @Override
             public void onClick(View v) {
                 mMonEquipePresenter.getJoueurByPoste("Pilier", uneListeView,adapter,desJoueurs);
-                /** new AlertDialog.Builder(mViewDiaglog.getContext())
+                 new AlertDialog.Builder(mViewDiaglog.getContext())
                         .setTitle("Quel joueur voulez-vous ajouter ?")
                         .setView(mViewDiaglog)
-                        .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(), "Vous avez rejoint le championnat ", Toast.LENGTH_SHORT).show();
-                            }
-                        }).create().show(); **/
+                        .create().show();
             }
         });
 
