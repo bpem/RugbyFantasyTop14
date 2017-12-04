@@ -12,9 +12,9 @@
     <string name="title_activity_profile">Rugby Fantasy Top14 </string>
     <string name="title_activity_login">S"'"identifier</string>
     <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
+    <string name="hint_password">Mot de passe</string>
     <string name="hint_name">Fullname</string>
-    <string name="btn_login">LOGIN</string>
+    <string name="btn_login">SE CONNECTER</string>
     <string name="btn_link_to_register">Pas encore inscrit ? Enregistre toi avec ton adresse mail maintenant !</string>
     <string name="btn_link_to_login">Déjà enregistré? Authentifie toi !</string>
     <string name="title_activity_reset_password">ResetPasswordActivity</string>

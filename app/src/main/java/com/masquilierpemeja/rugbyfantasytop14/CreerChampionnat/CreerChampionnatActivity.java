@@ -3,6 +3,9 @@ package com.masquilierpemeja.rugbyfantasytop14.CreerChampionnat;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -12,6 +15,10 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.masquilierpemeja.rugbyfantasytop14.Login.LoginActivity;
+import com.masquilierpemeja.rugbyfantasytop14.Profil.ProfilActivity;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 import com.masquilierpemeja.rugbyfantasytop14.RejoindreChampionnat.RejoindreChampionnatActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.*;
@@ -118,5 +125,31 @@ public class CreerChampionnatActivity extends AppCompatActivity implements Creer
         mCreerChampionnatPresenter.onDestroy();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menu_trois_petits_points, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.profil:
+                Intent intent = new Intent(CreerChampionnatActivity.this, ProfilActivity.class);
+                startActivity(intent);
+
+                return true;
+            case R.id.deconnexion:
+                FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
+                mFirebaseAuth.signOut();
+                startActivity(new Intent(CreerChampionnatActivity.this, LoginActivity.class));
+                finish();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
 }

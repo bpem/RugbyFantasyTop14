@@ -54,7 +54,7 @@ public class ProfilActivity extends AppCompatActivity implements ProfilView{
         if(user.getEstDansUnChampionnat())
             txtvUid.setText("Vous avez rejoins un tournois !");
         else
-            txtvUid.setText("Vous n'avez toujours pas rejoins de tournois !");
+            txtvUid.setText("Vous n'avez toujours pas rejoint de tournois !");
 
 
     }

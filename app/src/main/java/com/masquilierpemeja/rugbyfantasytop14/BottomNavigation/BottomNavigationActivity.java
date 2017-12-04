@@ -110,7 +110,7 @@ public class BottomNavigationActivity extends AppCompatActivity implements com.m
         PageChampionnatFragment fragment = new PageChampionnatFragment();
         fragment.setArguments(bundle);
         String nomChampionnat = intent.getExtras().getString("EXTRA_CHAMPIONNAT_NOM");
-        setTitle("Bienvenue dans le championnat: " + nomChampionnat);
+        setTitle("Championnat " + nomChampionnat);
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment, "Accueil");
         fragmentTransaction.commit();
