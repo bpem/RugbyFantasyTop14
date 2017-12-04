@@ -13,17 +13,16 @@ import com.google.firebase.database.ValueEventListener;
  * Created by bastienpemeja on 03/12/2017.
  */
 
-public class DatabaseManagerEquipe {
-
+public class DatabaseManagerEquipeTop14 {
     //////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////VARIABLES DE CLASSES///////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////
 
     // NOM DU NOEUD USER DANS FIREBASE
-    private final static String EQUIPES = "Equipe";
-    private DatabaseManagerEquipe.Reference ref;
-    private Equipe equipe;
-    private static DatabaseManagerEquipe INSTANCE = new DatabaseManagerEquipe();
+    private final static String EQUIPES = "EquipeTop14";
+    private DatabaseManagerEquipeTop14.Reference ref;
+    private EquipeTop14 equipeTop14;
+    private static DatabaseManagerEquipeTop14 INSTANCE = new DatabaseManagerEquipeTop14();
     private Boolean isEquipeExist;
 
 
@@ -32,9 +31,9 @@ public class DatabaseManagerEquipe {
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    private DatabaseManagerEquipe()
+    private DatabaseManagerEquipeTop14()
     {
-        ref = new DatabaseManagerEquipe.Reference();
+        ref = new DatabaseManagerEquipeTop14.Reference();
     }
 
 
@@ -43,18 +42,18 @@ public class DatabaseManagerEquipe {
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    public void getEquipeOnDatabase(final String uid, final DatabaseManagerEquipe.Result<Equipe> result)
+    public void getEquipeOnDatabase(final String uid, final DatabaseManagerEquipeTop14.Result<EquipeTop14> result)
     {
         ref.equipes.child(uid).addListenerForSingleValueEvent(new ValueEventListener()
         {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot)
             {
-                Equipe uneEquipe = new Equipe(
-                        // DO STUFF
+                EquipeTop14 uneEquipeTop14 = new EquipeTop14(
+                   // DO STUFF
                 );
                 if (true) {
-                    result.onSuccess(uneEquipe);
+                    result.onSuccess(uneEquipeTop14);
                 } else {
                     result.onFailure();
                 }
@@ -90,9 +89,9 @@ public class DatabaseManagerEquipe {
     }
 
 
-    public Task<Void> setUserOnDatabase(final Equipe equipe)
+    public Task<Void> setUserOnDatabase(final EquipeTop14 equipeTop14)
     {
-        return ref.equipes.child(equipe.getKeyEquipe()).setValue(equipe);
+        return ref.equipes.child(equipeTop14.getKeyEquipeTop14Top14()).setValue(equipeTop14);
     }
 
 
@@ -106,7 +105,7 @@ public class DatabaseManagerEquipe {
     /////////////////////////////////////////////////////////////////////////////////////
 
 
-    public static DatabaseManagerEquipe getInstance()
+    public static DatabaseManagerEquipeTop14 getInstance()
     {
         return INSTANCE;
     }
