@@ -38,7 +38,7 @@ public class InformationClassementAdapter extends ArrayAdapter<InformationClasse
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        String ID = getItem(position).getUser_ID();
+        String nom = getItem(position).getNom();
         int nbVictoires =   getItem(position).getNbVictoire();
         int nbDefaites = getItem(position).getNbDefaite();
         int nbEgalite = getItem(position).getNbEgalite();
@@ -56,7 +56,7 @@ public class InformationClassementAdapter extends ArrayAdapter<InformationClasse
         TextView textView_totalPoints = (TextView) convertView.findViewById(R.id.textView_total);
 
 
-        textView_ID.setText(ID);
+        textView_ID.setText(nom);
         textView_nbDefaites.setText(String.valueOf( nbDefaites));
         textView_nbVictoires.setText(String.valueOf(nbVictoires));
         textView_nbEgalite.setText(String.valueOf(nbEgalite));

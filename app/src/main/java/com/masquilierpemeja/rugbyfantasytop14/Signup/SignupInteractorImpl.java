@@ -47,16 +47,10 @@ public class SignupInteractorImpl implements SignupInteractor {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        if (addUserOnDatabse(mail)){
 
-                            Listener.signupIsSuccessful("Vous êtes maintenant enregistrés! ");
-                            return;
-                        }
-                        else {
+                        addUserOnDatabse(mail,  Listener);
 
-                            Listener.signupFailed("L'enregistrement a échoué");
-                            return;
-                        }
+
                     }
                 })
 
@@ -73,7 +67,7 @@ public class SignupInteractorImpl implements SignupInteractor {
 
     // AJOUTE L'UTILISATEUR A LA DATABASE
     // RENVOI TRUE SI L'AJOUT A FONCTIONNE
-    public boolean addUserOnDatabse(final String email){
+    public boolean addUserOnDatabse(final String email,  final SignupInteractor.onSignupFinishedListener Listener){
         db = DatabaseManagerUser.getInstance();
         FirebaseUser currentFirebaseUser = globalAuth.getCurrentUser() ;
         String currentFirebaseUserID = currentFirebaseUser.getUid();
@@ -82,6 +76,9 @@ public class SignupInteractorImpl implements SignupInteractor {
                         (new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
+
+                                Listener.signupIsSuccessful("Vous êtes maintenant enregistrés! ");
+
                                 Log.i("addUserOnDatabse", "SUCCESS");
                                 success = true;
                             }

@@ -26,7 +26,6 @@
             android:text="TITRE DE L'ARTICLE"
             android:textSize="25dp"
             android:textStyle="bold"
-            android:clickable="true"
             android:elevation="4dp"
             />
 

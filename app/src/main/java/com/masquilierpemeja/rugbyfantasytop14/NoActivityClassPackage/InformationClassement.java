@@ -8,6 +8,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import java.util.Random;
+
 /**
  * Created by Pierre on 03/12/2017.
  */
@@ -27,6 +29,16 @@ public class InformationClassement {
     private int ptsTerrainPris = 0;
     private int ptsTerrainMis = 0;
     private int difference = 0;
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    private String nom = " ";
     private int ptsTotal = 0;
     private DatabaseManagerInformationClassement dbInfoClassement;
 
@@ -46,6 +58,12 @@ public class InformationClassement {
 
         this.user_ID = user_ID;
         this.keyChampionnat = keyChampionnat;
+
+
+
+        Random r = new Random();
+        int valeur = 1 + r.nextInt(100 - 1);
+        this.nom = "Player" + valeur;
 
     }
 
