@@ -271,7 +271,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToMain() {
-        Toast.makeText(getApplicationContext(), "onSuccess", Toast.LENGTH_LONG).show();
+     //   Toast.makeText(getApplicationContext(), "onSuccess", Toast.LENGTH_LONG).show();
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         db = DatabaseManagerUser.getInstance();
@@ -298,6 +298,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                             intent.putExtra("EXTRA_CHAMPIONNAT_KEY", championnat.getKeyChamp());
                             intent.putExtra("EXTRA_CHAMPIONNAT_PRIVE", championnat.getEstPrive());
                             startActivity(intent);
+                            finish();
                         }
                     });
                 }
@@ -307,8 +308,5 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 }
             }
         });
-        Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
-        startActivity(intent);
-        finish();
     }
 }
