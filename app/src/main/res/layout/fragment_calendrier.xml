@@ -15,7 +15,9 @@
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:elevation="4dp"/>
 
         <TextView
             android:layout_marginTop="50dp"
@@ -23,7 +25,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="La saison n'a pas encore débuté !"
-
+            android:gravity="center"
+            android:background="#fff"
+            android:elevation="4dp"
             android:textSize="25dp"/>
 
 
