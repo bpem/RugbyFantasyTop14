@@ -2,6 +2,7 @@ package com.masquilierpemeja.rugbyfantasytop14.Classement;
 
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.InformationClassement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,15 +20,15 @@ public class ClassementPresenterImpl implements  ClassementPresenter, Classement
     }
 
 
-    public void  getListInfosClassementTriée(){
+    public void  getListInfosClassement(){
 
-       mClassementInterractorImpl.getListInfosClassementTriée();
+       mClassementInterractorImpl.getListInfosClassementTriee();
 
     }
 
-  public void sendListInformationClassement(List<InformationClassement> listInformationClassement){
+  public void sendListInformationClassement(ArrayList<InformationClassement> listInformationClassement){
 
-        mClassementView.sendListInformationClassement(listInformationClassement);
+        mClassementView.sendListInformationClassementTriee(listInformationClassement);
 
     }
 

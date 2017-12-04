@@ -1,13 +1,77 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.masquilierpemeja.rugbyfantasytop14.Classement.ClassementFragment">
+    android:orientation="vertical"
+    tools:context="com.masquilierpemeja.rugbyfantasytop14.Classement.ClassementFragment"
+    android:weightSum="100">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content"
+        android:weightSum="109">
+
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView_nom_joueur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="14"
+            android:text="Joueur"
+            android:textSize="33dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView_nb_victoire"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+                android:layout_weight="19"
+            android:text="V"
+            android:textSize="33dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView_nb_defaite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="D"
+            android:textSize="33dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView_nb_egalite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="E"
+            android:textSize="33dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView_difference"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="+/-"
+            android:textSize="33dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/textView_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="19"
+            android:text="Pts"
+            android:textSize="33dp"/>
+    </LinearLayout>
+
+
+    <ListView
+        android:id="@+id/listview_classement"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-</FrameLayout>
+        android:layout_weight="10"/>
+</LinearLayout>

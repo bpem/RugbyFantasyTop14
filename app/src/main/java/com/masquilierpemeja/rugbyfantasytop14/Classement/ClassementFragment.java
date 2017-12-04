@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -20,6 +22,7 @@ import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Information
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 import com.masquilierpemeja.rugbyfantasytop14.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,12 +33,12 @@ public class ClassementFragment extends Fragment implements ClassementView {
     private DatabaseManagerInformationClassement dbInformationClassement;
     private String IDcurrentFirebaseUser;
     private ClassementPresenterImpl mClassementPresenterImpl;
-    private List<InformationClassement> listInformationClassementTriée;
+    private ArrayList<InformationClassement> listInformationClassementTriee;
+    private ListView mListView;
+     private View mView;
 
     public ClassementFragment() {
 
-        mClassementPresenterImpl = new ClassementPresenterImpl(this);
-        getListInfosClassementTriée();
 
     }
 
@@ -43,21 +46,38 @@ public class ClassementFragment extends Fragment implements ClassementView {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_classement, container, false);
+        mView = inflater.inflate(R.layout.fragment_classement, container, false);;
+        mListView =  mView.findViewById(R.id.listview_classement);
+
+        mClassementPresenterImpl = new ClassementPresenterImpl(this);
+
+        getListInfosClassementTriée();
+
+
+        return mView;
     }
 
     @Override
     public void getListInfosClassementTriée() {
-       mClassementPresenterImpl.getListInfosClassementTriée();
+       mClassementPresenterImpl.getListInfosClassement();
 
     }
 
-    public void sendListInformationClassement(List<InformationClassement> listInformationClassement){
+    public void sendListInformationClassementTriee(ArrayList<InformationClassement> listInformationClassementTriee){
+        this.listInformationClassementTriee = listInformationClassementTriee;
+        printAdapter();
+    }
 
+    public void printAdapter(){
 
-        Toast.makeText(getContext(), "user ID ! !" +  listInformationClassement.get(0).getUser_ID(), Toast.LENGTH_SHORT).show();
+        InformationClassementAdapter adapter = new InformationClassementAdapter(getContext(), R.layout.adapter_view_classement, listInformationClassementTriee);
+        mListView.setAdapter(adapter);
 
 
     }
+
+
 }

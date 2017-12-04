@@ -1,17 +1,37 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
     tools:context="com.masquilierpemeja.rugbyfantasytop14.PageChampionnat.PageChampionnatFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:id="@+id/test_nom"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:paddingTop="5dp"
         android:textStyle="bold"
-        android:text="" />
+        android:layout_gravity="center"
+        android:text="Actualités " />
 
-</FrameLayout>
+
+    <View
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_width="fill_parent"
+        android:layout_height="2px"
+        android:background="#000000" />
+    
+    <ListView
+        android:id="@+id/listView_championnat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    </ListView>
+
+
+
+</LinearLayout>

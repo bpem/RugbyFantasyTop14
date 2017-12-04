@@ -12,6 +12,7 @@ import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Information
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -34,10 +35,8 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
         this.mClassementPresenterImpl = mClassementPresenterImpl;
     }
 
-    public void getListInfosClassementTriée(){
-
+    public void getListInfosClassementTriee(){
        getListOfInformationClassement(getKeyOfUser());
-
     }
 
     @Override
@@ -76,7 +75,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
             public void onDataChange(DataSnapshot dataSnapshot)
 
             {
-                List<InformationClassement> listInformationClassement = new ArrayList<InformationClassement>() ;
+                ArrayList<InformationClassement> listInformationClassement = new ArrayList<InformationClassement>() ;
 
                 for (DataSnapshot dt : dataSnapshot.getChildren()){
 
@@ -86,7 +85,7 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
                     }
                 }
 
-                mClassementPresenterImpl.sendListInformationClassement(listInformationClassement);
+            trierInformationClassement(listInformationClassement);
 
 
             }
@@ -101,28 +100,30 @@ public class ClassementInteractorImpl implements  ClassementInteractor {
     }
 
     @Override
-    public void getListInfosClassement() {
+    public void trierInformationClassement(ArrayList<InformationClassement> listInformationClassement) {
+
+
+        Boolean tab_en_ordre = false;
+        int taille = listInformationClassement.size();
+
+        while(!tab_en_ordre)
+        {
+            tab_en_ordre = true;
+            for(int i=0 ; i < taille-1 ; i++)
+            {
+                if(listInformationClassement.get(i).getPtsTotal() < listInformationClassement.get(i+1).getPtsTotal())
+                {
+                    Collections.swap(listInformationClassement, i, i+1);
+
+                    tab_en_ordre = false;
+                }
+            }
+            taille--;
+        }
+
+        mClassementPresenterImpl.sendListInformationClassement(listInformationClassement);
 
     }
-
-
-          /*  dbInfoClassement = DatabaseManagerInformationClassement.getInstance();
-
-            dbInfoClassement.getListOfInfosMatchsOnDatabase(keyOfUser, new DatabaseManagerInformationClassement.Result<List<InformationClassement>>() {
-                @Override
-                public void onSuccess(List<InformationClassement> informationClassements) {
-                    ClassementInteractorImpl.this.informationClassements = informationClassements;
-                    return;
-
-                }
-            });
-        }*/
-
-
-
-
-
-
 
 
 }

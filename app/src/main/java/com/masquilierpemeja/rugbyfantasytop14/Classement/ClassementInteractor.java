@@ -3,6 +3,7 @@ package com.masquilierpemeja.rugbyfantasytop14.Classement;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.InformationClassement;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +18,12 @@ public interface ClassementInteractor {
 
     }
 
-    void getListInfosClassementTriée();
+
     String getKeyOfUser();
     User getUser(String FirebaseUserID);
     void getListOfInformationClassement(String keyOfUser);
-    void getListInfosClassement();
+    void getListInfosClassementTriee();
+    void trierInformationClassement(ArrayList<InformationClassement> listInformationClassement);
 
 
 

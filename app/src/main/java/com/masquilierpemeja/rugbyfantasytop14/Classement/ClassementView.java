@@ -2,6 +2,7 @@ package com.masquilierpemeja.rugbyfantasytop14.Classement;
 
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.InformationClassement;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
 public interface ClassementView {
 
     void getListInfosClassementTriée();
-     void sendListInformationClassement(List<InformationClassement> listInformationClassement);
+     void sendListInformationClassementTriee(ArrayList<InformationClassement> listInformationClassement);
 
 
 
