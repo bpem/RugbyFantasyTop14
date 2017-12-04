@@ -5,20 +5,21 @@ package com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage;
  */
 
 public class EquipeTop14 {
-    String keyEquipeTop14, nomEquipeTop14;
-    int couleur1EquipeTop14, couleur2EquipeTop14;
+    String keyEquipeTop14, nomEquipeTop14, acronymeTop14;
+    // int couleur1EquipeTop14, couleur2EquipeTop14;
 
 
     public EquipeTop14(){}
 
-    public EquipeTop14(String keyEquipeTop14, String nomEquipeTop14, int couleur1EquipeTop14, int couleur2EquipeTop14) {
+    public EquipeTop14(String keyEquipeTop14, String nomEquipeTop14, String acronymeTop14/** , int couleur1EquipeTop14, int couleur2EquipeTop14**/) {
         this.keyEquipeTop14 = keyEquipeTop14;
         this.nomEquipeTop14 = nomEquipeTop14;
-        this.couleur1EquipeTop14 = couleur1EquipeTop14;
-        this.couleur2EquipeTop14 = couleur2EquipeTop14;
+        this.acronymeTop14 = acronymeTop14;
+     /**   this.couleur1EquipeTop14 = couleur1EquipeTop14;
+        this.couleur2EquipeTop14 = couleur2EquipeTop14; **/
     }
 
-    public String getKeyEquipeTop14Top14() {
+    public String getKeyEquipeTop14() {
         return keyEquipeTop14;
     }
 
@@ -34,7 +35,7 @@ public class EquipeTop14 {
         this.nomEquipeTop14 = nomEquipeTop14;
     }
 
-    public int getCouleur1EquipeTop14() {
+   /** public int getCouleur1EquipeTop14() {
         return couleur1EquipeTop14;
     }
 
@@ -48,5 +49,13 @@ public class EquipeTop14 {
 
     public void setCouleur2EquipeTop14(int couleur2EquipeTop14) {
         this.couleur2EquipeTop14 = couleur2EquipeTop14;
+    } **/
+
+    public String getAcronymeTop14() {
+        return acronymeTop14;
+    }
+
+    public void setAcronymeTop14(String acronymeTop14) {
+        this.acronymeTop14 = acronymeTop14;
     }
 }

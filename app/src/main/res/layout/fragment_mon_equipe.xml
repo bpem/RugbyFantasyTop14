@@ -4,10 +4,143 @@
     android:layout_height="match_parent"
     tools:context="com.masquilierpemeja.rugbyfantasytop14.MonEquipe.MonEquipeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+
+        <Button
+            android:id="@+id/btn_pilierG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="33dp"
+            android:layout_marginTop="42dp"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/btn_talonneur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/btn_pilierG"
+            android:layout_centerHorizontal="true"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/btn_pilierD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btn_talonneur"
+            android:layout_alignBottom="@+id/btn_talonneur"
+            android:layout_marginStart="27dp"
+            android:layout_toEndOf="@+id/btn_talonneur"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/btn_2nd_ligne1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_pilierG"
+            android:layout_marginEnd="33dp"
+            android:layout_marginTop="27dp"
+            android:layout_toStartOf="@+id/btn_2nd_ligne2"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/btn_2nd_ligne2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btn_pilierD"
+            android:layout_alignTop="@+id/btn_2nd_ligne1"
+            android:layout_marginEnd="53dp"
+            android:text="5" />
+
+        <Button
+            android:id="@+id/btn_3eme_ligneG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_pilierG"
+            android:layout_below="@+id/btn_2nd_ligne1"
+            android:layout_marginTop="34dp"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/btn_3eme_ligneC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_talonneur"
+            android:layout_alignTop="@+id/btn_3eme_ligneG"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/btn_3eme_ligneD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_pilierD"
+            android:layout_alignTop="@+id/btn_3eme_ligneC"
+            android:text="8" />
+
+        <Button
+            android:id="@+id/btn_demi_de_melee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btn_2nd_ligne1"
+            android:layout_below="@+id/btn_3eme_ligneG"
+            android:layout_marginTop="29dp"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/btn_demi_d_ouverture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/btn_demi_de_melee"
+            android:layout_alignBottom="@+id/btn_demi_de_melee"
+            android:layout_alignStart="@+id/btn_2nd_ligne2"
+            android:text="10" />
+
+        <Button
+            android:id="@+id/btn_centre1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_demi_de_melee"
+            android:layout_below="@+id/btn_demi_de_melee"
+            android:layout_marginTop="29dp"
+            android:text="12" />
+
+        <Button
+            android:id="@+id/btn_centre2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_demi_d_ouverture"
+            android:layout_alignTop="@+id/btn_centre1"
+            android:text="13" />
+
+        <Button
+            android:id="@+id/btn_ailierG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@+id/btn_3eme_ligneG"
+            android:layout_below="@+id/btn_centre1"
+            android:layout_marginTop="23dp"
+            android:text="11" />
+
+        <Button
+            android:id="@+id/btn_arriere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/btn_ailierG"
+            android:layout_alignStart="@+id/btn_3eme_ligneC"
+            android:text="15" />
+
+        <Button
+            android:id="@+id/btn_ailierD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btn_3eme_ligneD"
+            android:layout_alignTop="@+id/btn_arriere"
+            android:text="14" />
+    </RelativeLayout>
 
 </FrameLayout>

@@ -25,7 +25,7 @@ public class ProfilPresenterImpl implements ProfilPresenter {
     }
 
     public void sendUser(User user){
-        mProfilView.sendUser(user);
+          mProfilView.sendUser(user);
     }
 
     @Override

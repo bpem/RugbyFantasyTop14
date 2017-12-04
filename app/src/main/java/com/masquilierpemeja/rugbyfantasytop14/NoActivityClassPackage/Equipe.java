@@ -26,4 +26,20 @@ public class Equipe {
     public void setKeyEquipe(String keyEquipe) {
         this.keyEquipe = keyEquipe;
     }
+
+    public String getKeyUser() {
+        return keyUser;
+    }
+
+    public void setKeyUser(String keyUser) {
+        this.keyUser = keyUser;
+    }
+
+    public List<Joueur> getListJoueur() {
+        return listJoueur;
+    }
+
+    public void setListJoueur(List<Joueur> listJoueur) {
+        this.listJoueur = listJoueur;
+    }
 }

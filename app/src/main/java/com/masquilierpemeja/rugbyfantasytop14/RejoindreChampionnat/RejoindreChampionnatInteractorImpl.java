@@ -72,6 +72,7 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
                     }
                 });
     }
+
     @Override
     public void listerChampionnat(final ListView uneListe, final ArrayAdapter<Championnat> adapter, final ArrayList<Championnat> champArray) {
 
@@ -86,7 +87,6 @@ public class RejoindreChampionnatInteractorImpl implements RejoindreChampionnatI
                         dataSnapshot.child("motDePasse").getValue(String.class),
                         dataSnapshot.child("prive").getValue(Boolean.class),
                         dataSnapshot.child("nombreMax").getValue(Integer.class));
-
 
                 champArray.add(unChampionnat);
 

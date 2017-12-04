@@ -30,6 +30,8 @@ import com.masquilierpemeja.rugbyfantasytop14.BottomNavigation.BottomNavigationA
 import com.masquilierpemeja.rugbyfantasytop14.MenuPrincipal.MenuPrincipalActivity;
 import com.masquilierpemeja.rugbyfantasytop14.MotDePasseOublie.MotDePasseOublieActivity;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.Championnat;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerEquipeTop14;
+import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerJoueur;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerUser;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.DatabaseManagerChampionnat;
 import com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage.User;
@@ -49,6 +51,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private LoginPresenterImpl mLoginPresenter;
     DatabaseManagerUser db;
     DatabaseManagerChampionnat dbC;
+    DatabaseManagerEquipeTop14 dbETop14;
+    DatabaseManagerJoueur dbJ;
 
 
 
@@ -272,6 +276,12 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         FirebaseUser user = auth.getCurrentUser();
         db = DatabaseManagerUser.getInstance();
         dbC = DatabaseManagerChampionnat.getInstance();
+
+        // Créer des joueurs et des équipes pour données de tests
+        /**dbETop14 = DatabaseManagerEquipeTop14.getInstance();
+        dbETop14.creerToutesLesEquipes();
+        dbJ = DatabaseManagerJoueur.getInstance();
+        dbJ.creerDesJoueurs();**/
         db.getUserOnDatabase(user.getUid(), new DatabaseManagerUser.Result<User>() {
             @Override
             public void onSuccess(User user) {
@@ -287,7 +297,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                             intent.putExtra("EXTRA_CHAMPIONNAT_NBMAX", championnat.getNbMaxChamp());
                             intent.putExtra("EXTRA_CHAMPIONNAT_KEY", championnat.getKeyChamp());
                             intent.putExtra("EXTRA_CHAMPIONNAT_PRIVE", championnat.getEstPrive());
-
                             startActivity(intent);
                         }
                     });
@@ -295,7 +304,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
                 else{
                     Intent intent = new Intent(LoginActivity.this, MenuPrincipalActivity.class);
                     startActivity(intent);
-
                 }
             }
         });

@@ -5,43 +5,42 @@ package com.masquilierpemeja.rugbyfantasytop14.NoActivityClassPackage;
  */
 
 public class Joueur {
-    String keyJoueur, nomJoueur, prenomJoueur, keyEquipe, posteJoueur, nationaliteJoueur;
-    int ageJoueur;
+    private String keyJoueur, nom, prenom, keyEquipe, poste, nationalite;
 
     public Joueur(){}
 
-    public Joueur(String keyJoueur, String nomJoueur, String prenomJoueur, String keyEquipe, String posteJoueur, String nationaliteJoueur, int ageJoueur) {
+    public Joueur(String keyJoueur, String nom, String prenom, String keyEquipe, String poste, String nationalite) {
         this.keyJoueur = keyJoueur;
-        this.nomJoueur = nomJoueur;
-        this.prenomJoueur = prenomJoueur;
+        this.nom = nom;
+        this.prenom = prenom;
         this.keyEquipe = keyEquipe;
-        this.posteJoueur = posteJoueur;
-        this.nationaliteJoueur = nationaliteJoueur;
-        this.ageJoueur = ageJoueur;
+        this.poste = poste;
+        this.nationalite = nationalite;
     }
 
     public String getKeyJoueur() {
         return keyJoueur;
     }
 
-    public void setKeyJoueur(String keyJoueur) {
+    public Joueur setKeyJoueur(String keyJoueur) {
         this.keyJoueur = keyJoueur;
+        return this;
     }
 
-    public String getNomJoueur() {
-        return nomJoueur;
+    public String getNom() {
+        return nom;
     }
 
-    public void setNomJoueur(String nomJoueur) {
-        this.nomJoueur = nomJoueur;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getPrenomJoueur() {
-        return prenomJoueur;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setPrenomJoueur(String prenomJoueur) {
-        this.prenomJoueur = prenomJoueur;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getKeyEquipe() {
@@ -52,27 +51,19 @@ public class Joueur {
         this.keyEquipe = keyEquipe;
     }
 
-    public String getPosteJoueur() {
-        return posteJoueur;
+    public String getPoste() {
+        return poste;
     }
 
-    public void setPosteJoueur(String posteJoueur) {
-        this.posteJoueur = posteJoueur;
+    public void setPoste(String poste) {
+        this.poste = poste;
     }
 
-    public String getNationaliteJoueur() {
-        return nationaliteJoueur;
+    public String getNationalite() {
+        return nationalite;
     }
 
-    public void setNationaliteJoueur(String nationaliteJoueur) {
-        this.nationaliteJoueur = nationaliteJoueur;
-    }
-
-    public int getAgeJoueur() {
-        return ageJoueur;
-    }
-
-    public void setAgeJoueur(int ageJoueur) {
-        this.ageJoueur = ageJoueur;
+    public void setNationalite(String nationalite) {
+        this.nationalite = nationalite;
     }
 }

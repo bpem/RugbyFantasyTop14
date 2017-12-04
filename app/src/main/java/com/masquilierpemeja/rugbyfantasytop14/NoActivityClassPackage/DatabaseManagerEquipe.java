@@ -9,6 +9,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by bastienpemeja on 03/12/2017.
  */
@@ -25,6 +28,8 @@ public class DatabaseManagerEquipe {
     private Equipe equipe;
     private static DatabaseManagerEquipe INSTANCE = new DatabaseManagerEquipe();
     private Boolean isEquipeExist;
+    private List<Joueur> uneListeJoueur;
+
 
 
     /////////////////////////////////////////////////////////////////////////////////////
@@ -68,6 +73,35 @@ public class DatabaseManagerEquipe {
         });
     }
 
+    public void getJoueurOnDatabaseByPoste(final String poste, final DatabaseManagerEquipe.Result<List<Joueur>> result)
+    {
+        ref.equipes.child(poste).addListenerForSingleValueEvent(new ValueEventListener()
+        {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+                ArrayList<Joueur> listJoueurs = new ArrayList<Joueur>() ;
+
+                for (DataSnapshot dt : dataSnapshot.getChildren()){
+                        Joueur unJoueur = dt.getValue(Joueur.class);
+                    if(unJoueur.getPoste().equals(poste)){
+                        listJoueurs.add(unJoueur);
+                    }
+
+                }
+                result.onSuccess(listJoueurs);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError)
+            {
+                result.onError(databaseError);
+            }
+        });
+    }
+
+
     public void isEquipeExist(final String uid, final DatabaseManagerUser.ResultBoolean<Boolean> resultBoolean){
 
         ref.equipes.child(uid).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -96,8 +130,9 @@ public class DatabaseManagerEquipe {
     }
 
 
-    public void creerToutesLesEquipes(){
-
+    public List<Joueur> creerListeEquipe(){
+        uneListeJoueur = new ArrayList<Joueur>();
+        return uneListeJoueur;
     }
 
 
