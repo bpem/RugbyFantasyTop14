@@ -19,17 +19,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="14"
-            android:text="Joueur"
-            android:textSize="33dp"/>
+            android:text="Joueurs"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:gravity="center"
             android:id="@+id/textView_nb_victoire"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-                android:layout_weight="19"
+            android:layout_weight="19"
             android:text="V"
-            android:textSize="33dp"/>
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:gravity="center"
@@ -38,7 +40,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="19"
             android:text="D"
-            android:textSize="33dp"/>
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:gravity="center"
@@ -47,7 +50,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="19"
             android:text="E"
-            android:textSize="33dp"/>
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:gravity="center"
@@ -56,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="19"
             android:text="+/-"
-            android:textSize="33dp"/>
+            android:textSize="25dp"
+            android:textStyle="bold"/>
 
         <TextView
             android:gravity="center"
@@ -65,7 +70,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="19"
             android:text="Pts"
-            android:textSize="33dp"/>
+            android:textSize="25dp"
+            android:textStyle="bold"/>
     </LinearLayout>
 
 

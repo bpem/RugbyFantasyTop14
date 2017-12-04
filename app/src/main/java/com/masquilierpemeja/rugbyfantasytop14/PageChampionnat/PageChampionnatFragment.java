@@ -52,7 +52,6 @@ public class PageChampionnatFragment extends Fragment implements PageChampionnat
 
 
         tvTitreChampionnat = (TextView) mView.findViewById(R.id.test_nom);
-        tvTitreChampionnat.setText("Bienvenue dans le championnat " + championnat.getNomChamp());
         mListView = mView.findViewById(R.id.listView_championnat);
 
         creationArticle();
